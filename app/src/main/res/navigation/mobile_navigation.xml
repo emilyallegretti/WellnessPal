@@ -3,23 +3,36 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_petInfo">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.bignerdranch.android.wellnesspal.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_petInfo"
+        android:name="com.bignerdranch.android.wellnesspal.ui.petinfo.PetInfoFragment"
+        android:label="Pet Info"
+        tools:layout="@layout/fragment_pet_info" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.bignerdranch.android.wellnesspal.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_logs"
+        android:name="com.bignerdranch.android.wellnesspal.ui.logs.LogsFragment"
+        android:label="Logs"
+        tools:layout="@layout/fragment_logs" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.bignerdranch.android.wellnesspal.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_resources"
+        android:name="com.bignerdranch.android.wellnesspal.ui.resources.ResourcesFragment"
+        android:label="Resources"
+        tools:layout="@layout/fragment_resources" />
+
+    <fragment
+        android:id="@+id/navigation_gradPets"
+        android:name="com.bignerdranch.android.wellnesspal.ui.gradpets.GradPetsFragment"
+        android:label="Grad Pets"
+        tools:layout="@layout/fragment_grad_pets" />
+
+    <fragment
+        android:id="@+id/navigation_profile"
+        android:name="com.bignerdranch.android.wellnesspal.ui.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+
 </navigation>
