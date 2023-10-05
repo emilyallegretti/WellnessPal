@@ -1,11 +1,8 @@
 <resources>
     <string name="app_name">WellnessPal</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
-    <string name="pet_info">Pet Info</string>
     <string name="logs">Logs</string>
     <string name="resources">Resources</string>
     <string name="grad_pets">Grad Pets</string>
     <string name="profile">Profile</string>
+    <string name="pet">Pet</string>
 </resources>

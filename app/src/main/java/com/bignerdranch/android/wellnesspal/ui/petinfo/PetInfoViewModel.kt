@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 
 class PetInfoViewModel : ViewModel() {
     private val _text = MutableLiveData<String>().apply {
-        value = "This is PetInfo Fragment"
+        value = "This is Pet Fragment"
     }
     val text: LiveData<String> = _text
 }
