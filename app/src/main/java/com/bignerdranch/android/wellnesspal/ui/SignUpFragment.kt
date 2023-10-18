@@ -1,5 +1,6 @@
 package com.bignerdranch.android.wellnesspal.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import com.bignerdranch.android.wellnesspal.MainActivity
 import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentSignUpBinding
 import com.bignerdranch.android.wellnesspal.databinding.FragmentWelcomeBinding
@@ -71,7 +73,11 @@ class SignUpFragment: Fragment() {
 
     private fun signUp(email: String, password: String) {
         try {
+            // if sign-up successful, start MainActivity
             auth.createUserWithEmailAndPassword(email, password)
+            if (auth.currentUser != null) {
+                startActivity(Intent(activity, MainActivity::class.java))
+            }
         } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException possible
                 Toast.makeText(
                     context,
