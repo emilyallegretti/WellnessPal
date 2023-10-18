@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/auth_navigation"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@+id/navigation_welcomeScreen">
+
+    <fragment
+        android:id="@+id/navigation_welcomeScreen"
+        android:name="com.bignerdranch.android.wellnesspal.ui.WelcomeFragment"
+        android:label="WelcomeFragment"
+        tools:layout="@layout/fragment_welcome" >
+        <action
+            android:id="@+id/to_sign_in"
+            app:destination="@id/navigation_signIn" />
+        <action
+            android:id="@+id/to_sign_up"
+            app:destination="@id/signUp" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_signIn"
+        android:name="com.bignerdranch.android.wellnesspal.ui.SignInFragment"
+        android:label="SignInFragment"
+        tools:layout="@layout/fragment_sign_in" />
+
+    <fragment
+        android:id="@+id/signUp"
+        android:name="com.bignerdranch.android.wellnesspal.ui.SignUpFragment"
+        android:label="SignUpFragment"
+        tools:layout="@layout/fragment_sign_up"/>
+
+</navigation>
