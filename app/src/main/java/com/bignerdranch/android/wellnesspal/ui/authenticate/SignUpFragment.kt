@@ -32,7 +32,7 @@ class SignUpFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val signUpViewModel =
+        signUpViewModel =
             ViewModelProvider(this)[SignUpViewModel::class.java]
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
@@ -82,7 +82,7 @@ class SignUpFragment: Fragment() {
             auth.createUserWithEmailAndPassword(email, password)
             if (auth.currentUser != null) {
                 startActivity(Intent(activity, MainActivity::class.java))
-                signUpViewModel.writeNewUser(email, password)
+                signUpViewModel.writeNewUser(email, password, auth.currentUser!!.uid)
             }
         } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException possible
                 Toast.makeText(
