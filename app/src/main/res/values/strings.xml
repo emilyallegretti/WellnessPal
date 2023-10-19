@@ -11,4 +11,18 @@
     <string name="sign_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="sign_out">Sign Out</string>
+    <string name="first_name">First Name:</string>
+    <string name="last_name">Last Name:</string>
+    <string name="user_name">Username:</string>
+    <string name="pets_graduated">Pets Graduated:</string>
+    <string name="change_password">Change Password</string>
+    <string name="old_password">Old:</string>
+    <string name="new_password">New:</string>
+    <string name="repeat_new_password">Re-Enter New:</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="change_goals">Change Goals</string>
+    <string name="sleep">Sleep</string>
+    <string name="water">Water</string>
+    <string name="meals">Meals</string>
+    <string name="ok">OK</string>
 </resources>
