@@ -15,6 +15,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
     private lateinit var auth: FirebaseAuth
+    private lateinit var profileViewModel: ProfileViewModel
     private var _binding: FragmentProfileBinding? = null
 
     // This property is only valid between onCreateView and
@@ -26,13 +27,13 @@ class ProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val profileViewModel =
+        profileViewModel =
             ViewModelProvider(this).get(ProfileViewModel::class.java)
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textProfile
+        val textView: TextView = binding.textViewFieldUsername
         profileViewModel.text.observe(viewLifecycleOwner) {
             textView.text = it
         }
@@ -54,6 +55,12 @@ class ProfileFragment : Fragment() {
                     startActivity(Intent(activity, AuthActivity::class.java))
                 } else {
                     Toast.makeText(context, "Error Signing Out", Toast.LENGTH_SHORT)
+                }
+            }
+
+            buttonResetPassword.setOnClickListener {
+                if (auth.currentUser != null){
+
                 }
             }
         }
