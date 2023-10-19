@@ -2,9 +2,8 @@ package com.bignerdranch.android.wellnesspal
 
 import android.content.Context
 import android.util.Log
+import com.bignerdranch.android.wellnesspal.models.Goal
 import com.bignerdranch.android.wellnesspal.models.User
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 
@@ -18,9 +17,12 @@ class DataRepository private constructor(context: Context) {
     // QUERIES
 
     // Write a new User.
-    fun writeNewUser(user: User, uid: String) {
+    fun writeUser(user: User, uid: String) {
         Log.d(TAG, "writing new user...")
         database.child("users").child(uid).setValue(user)
+    }
+    fun writeGoal(goal: Goal, uid:String) {
+        database.child("users").child(uid).child("goal").setValue(goal)
     }
 
     companion object {

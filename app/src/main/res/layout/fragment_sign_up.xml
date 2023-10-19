@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -9,13 +10,42 @@
     android:paddingBottom="@dimen/activity_vertical_margin">
 
     <!-- This code was inspired by:
-     https://github.com/firebase/quickstart-android/blob/master/database/app/src/main/res/layout/fragment_sign_in.xml  -->
+     https://github.com/firebase/quickstart-android/blob/master/database/app/src/main/res/layout/fragment_sign_in.xml
+     TODO: better styling-->
+
+    <EditText
+        android:id="@+id/fieldLname"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/fieldFname"
+        app:layout_constraintTop_toTopOf="@+id/fieldFname" />
+
+    <EditText
+        android:id="@+id/fieldFname"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="276dp"
+        android:ellipsize="end"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSignUp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@id/fieldEmail" />
 
     <EditText
         android:id="@+id/fieldEmail"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="352dp"
+        android:layout_marginTop="112dp"
         android:ellipsize="end"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
@@ -25,7 +55,7 @@
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
+<!--TODO: re-enter password feature? -->
     <EditText
         android:id="@+id/fieldPassword"
         android:layout_width="150dp"
@@ -51,6 +81,73 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/fieldEmail"
         />
+
+
+    <TextView
+        android:id="@+id/headerUserInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:text="User Information"
+        android:textSize="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fieldEmail"
+        app:layout_constraintTop_toTopOf="parent" />
+<!--TODO: more detail for users on this page, like a note that the users can changethe information later on-->
+    <TextView
+        android:id="@+id/headerGoals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="572dp"
+        android:text="Goals Per Day"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fieldFname" />
+
+    <EditText
+        android:id="@+id/fieldWaterGoal"
+        android:layout_width="203dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="324dp"
+        android:ellipsize="end"
+        android:hint="@string/water_goal"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/headerGoals"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/fieldFoodGoal"
+        android:layout_width="203dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:hint="@string/num_meals"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fieldSleepGoal"
+        app:layout_constraintTop_toBottomOf="@+id/fieldSleepGoal" />
+
+    <EditText
+        android:id="@+id/fieldSleepGoal"
+        android:layout_width="203dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:hint="@string/hours_sleep"
+        android:inputType="numberDecimal"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fieldWaterGoal"
+        app:layout_constraintTop_toBottomOf="@+id/fieldWaterGoal" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
