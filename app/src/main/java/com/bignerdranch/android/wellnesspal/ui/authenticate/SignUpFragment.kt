@@ -3,6 +3,7 @@ package com.bignerdranch.android.wellnesspal.ui.authenticate
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -82,11 +83,12 @@ class SignUpFragment: Fragment() {
             // if sign-up successful, start MainActivity
             auth.createUserWithEmailAndPassword(email, password)
             if (auth.currentUser != null) {
+                Log.d("SignUpFragment", "current signed in user: "+ auth.currentUser!!.uid)
                 signUpViewModel.writeUser(email, password, fname,lname)
                 signUpViewModel.writeGoal(waterGoal, mealGoal, sleepGoal)
                 startActivity(Intent(activity, MainActivity::class.java))
             }
-        } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException possible
+        } catch(e: Exception){  //TODO: different catch clauses for each FirebaseAuthException possible
                 Toast.makeText(
                     context,
                     "Error creating new user",

@@ -30,11 +30,11 @@
         android:id="@+id/foodLogButton"
         android:layout_width="57dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="180dp"
         android:src="@drawable/food_log_icon_v2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -54,12 +54,11 @@
         android:layout_width="59dp"
         android:layout_height="58dp"
         android:layout_marginTop="29dp"
-        android:layout_marginEnd="636dp"
         android:src="@drawable/sleep_log_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/foodLogButton"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/foodLogButton"
         app:layout_constraintVertical_bias="0.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>

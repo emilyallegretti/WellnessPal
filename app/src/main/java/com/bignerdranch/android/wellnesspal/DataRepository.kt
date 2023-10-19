@@ -18,10 +18,11 @@ class DataRepository private constructor(context: Context) {
 
     // Write a new User.
     fun writeUser(user: User, uid: String) {
-        Log.d(TAG, "writing new user...")
+        Log.d(TAG, "writing new user... ")
         database.child("users").child(uid).setValue(user)
     }
     fun writeGoal(goal: Goal, uid:String) {
+        Log.d(TAG, "writing new goal at " + uid)
         database.child("users").child(uid).child("goal").setValue(goal)
     }
 

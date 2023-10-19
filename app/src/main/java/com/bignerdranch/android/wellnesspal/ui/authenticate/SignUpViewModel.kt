@@ -13,11 +13,11 @@ class SignUpViewModel : ViewModel() {
     // maybe with a conditional check on the email we can create AND update users in this method, same with rest of methods
         fun writeUser(email:String, password:String, fname:String, lname:String) {
             val user = User(email, password, fname, lname)
-            dataRepository.writeUser(user, auth!!.currentUser.toString())
+            dataRepository.writeUser(user, auth!!.currentUser!!.uid)
         }
 
     fun writeGoal(waterGoal: String, eatGoal:String, sleepGoal: String) {
         val goal = Goal(waterGoal, eatGoal, sleepGoal)
-        dataRepository.writeGoal(goal, auth!!.currentUser.toString())
+        dataRepository.writeGoal(goal, auth!!.currentUser!!.uid)
     }
 }

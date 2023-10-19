@@ -61,7 +61,7 @@ class SignInFragment : Fragment() {
                 startActivity(Intent(activity, MainActivity::class.java))
             }
 
-        } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException
+        } catch(e: Exception){  //TODO: different catch clauses for each FirebaseAuthException
             Toast.makeText(
                 context,
                 "Sign-In Failed",
