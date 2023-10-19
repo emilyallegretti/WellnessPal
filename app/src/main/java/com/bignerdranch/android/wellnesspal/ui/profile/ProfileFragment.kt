@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import com.bignerdranch.android.wellnesspal.databinding.FragmentProfileBinding
-import com.bignerdranch.android.wellnesspal.ui.AuthActivity
+import com.bignerdranch.android.wellnesspal.ui.authenticate.AuthActivity
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {

@@ -1,4 +1,4 @@
-package com.bignerdranch.android.wellnesspal.ui
+package com.bignerdranch.android.wellnesspal.ui.authenticate
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,17 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.navigation.fragment.findNavController
+import androidx.lifecycle.ViewModelProvider
 import com.bignerdranch.android.wellnesspal.MainActivity
-import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentSignUpBinding
-import com.bignerdranch.android.wellnesspal.databinding.FragmentWelcomeBinding
+import com.bignerdranch.android.wellnesspal.ui.profile.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException
 
 class SignUpFragment: Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private lateinit var auth : FirebaseAuth
+    private lateinit var signUpViewModel: SignUpViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -32,6 +32,8 @@ class SignUpFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+        val signUpViewModel =
+            ViewModelProvider(this)[SignUpViewModel::class.java]
         _binding = FragmentSignUpBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -73,10 +75,14 @@ class SignUpFragment: Fragment() {
 
     private fun signUp(email: String, password: String) {
         try {
+            if (!validateForm()) {
+                return
+            }
             // if sign-up successful, start MainActivity
             auth.createUserWithEmailAndPassword(email, password)
             if (auth.currentUser != null) {
                 startActivity(Intent(activity, MainActivity::class.java))
+                signUpViewModel.writeNewUser(email, password)
             }
         } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException possible
                 Toast.makeText(

@@ -1,16 +1,14 @@
-package com.bignerdranch.android.wellnesspal.ui
+package com.bignerdranch.android.wellnesspal.ui.authenticate
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.bignerdranch.android.wellnesspal.MainActivity
-import com.bignerdranch.android.wellnesspal.databinding.FragmentProfileBinding
 import com.bignerdranch.android.wellnesspal.databinding.FragmentSignInBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthException

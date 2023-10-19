@@ -1,15 +1,11 @@
-package com.bignerdranch.android.wellnesspal.ui
+package com.bignerdranch.android.wellnesspal.ui.authenticate
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.bignerdranch.android.wellnesspal.MainActivity
-import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.ActivityAuthBinding
-import com.bignerdranch.android.wellnesspal.databinding.ActivityMainBinding
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
 
 class AuthActivity : AppCompatActivity() {
     private lateinit var binding: ActivityAuthBinding

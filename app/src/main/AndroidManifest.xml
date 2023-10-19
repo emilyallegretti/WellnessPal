@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <application
+        android:name=".WellnessPalApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,7 +18,7 @@
             android:exported="false"
             android:label="@string/app_name"/>
         <activity
-            android:name=".ui.AuthActivity"
+            android:name=".ui.authenticate.AuthActivity"
             android:exported="true"
             >
             <intent-filter>

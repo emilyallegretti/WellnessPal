@@ -1,4 +1,4 @@
-package com.bignerdranch.android.wellnesspal.ui
+package com.bignerdranch.android.wellnesspal.ui.authenticate
 
 import android.os.Bundle
 import android.util.Log
