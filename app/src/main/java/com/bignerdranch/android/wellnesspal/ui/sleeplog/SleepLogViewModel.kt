@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.Log
+import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -26,8 +27,8 @@ class SleepLogViewModel : ViewModel(){
 
     fun writeNewSleepLog(hours:String) {
         val date = getDate()
-        val sleepLog = Log("sleep", date, hours , null, null )
+        val sleepLog = SleepLog("sleep", date, hours )
 
-        dataRepository.writeNewLog(sleepLog, auth!!.currentUser!!.uid)
+        dataRepository.writeNewSleepLog(sleepLog, auth!!.currentUser!!.uid)
     }
 }
