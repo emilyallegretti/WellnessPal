@@ -1,5 +1,6 @@
 package com.bignerdranch.android.wellnesspal.ui.profile
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -16,11 +17,13 @@ class ProfileViewModel : ViewModel() {
     private val dataRepository = DataRepository.get()
     private var auth = FirebaseAuth.getInstance()
 
-    private val _userData = MutableLiveData<User>()
-    val userData: LiveData<User> = _userData
+    val userData = MutableLiveData<User>()
 
 
-
+    /*
+    Add event listener to the current user in the database
+    Add data read into live data
+     */
     fun addUserEventListener(userReference: DatabaseReference){
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
@@ -28,7 +31,7 @@ class ProfileViewModel : ViewModel() {
 
                 //update the liveData with the new value from the listener
                 user?.let {
-                    _userData.value = it
+                    userData.value = it
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -36,7 +39,6 @@ class ProfileViewModel : ViewModel() {
             }
         }
         userReference.addValueEventListener(userListener)
-
     }
 
     /*
@@ -47,16 +49,25 @@ class ProfileViewModel : ViewModel() {
     If the passwords don't match, return false
      */
     private fun passwordCompare(enteredPassword: String): Boolean{
-        if (_userData.value!!.hashedPass == enteredPassword) {
+        if (userData.value!!.hashedPass == enteredPassword) {
             return true
         }
         return false
     }
 
-    fun resetPassword(oldPassword: String, newPassword: String, reEnteredNewPass: String){
-        if (passwordCompare(oldPassword)){
-            dataRepository.updatePassword(auth.currentUser!!.uid, newPassword)
+    /*
+    Function called when a user wants to reset their password
+    Return value tells the fragment what to display in a toast
+     */
+    fun resetPassword(oldPassword: String, newPassword: String, reEnteredNewPass: String): Boolean{
+        //check that
+        if (passwordCompare(oldPassword)) {
+            if (newPassword == reEnteredNewPass) {
+                dataRepository.updatePassword(auth.currentUser!!.uid, newPassword)
+                return true
+            }
         }
+        return false
     }
 
 }

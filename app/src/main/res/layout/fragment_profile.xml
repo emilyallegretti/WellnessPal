@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="162dp"
         android:layout_marginEnd="144dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="60dp"
         android:gravity="center_horizontal"
         android:text="@string/sign_out"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -108,9 +108,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:text="@string/change_password"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeaderPetsGraduated" />
 
     <EditText
         android:id="@+id/editTextFieldOldPassword"
@@ -164,9 +165,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="45dp"
         android:text="@string/change_goals"
-        app:layout_constraintBottom_toBottomOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/guideline" />
+        app:layout_constraintStart_toEndOf="@+id/guideline"
+        app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <EditText
         android:id="@+id/editTextFieldChangeWater"
