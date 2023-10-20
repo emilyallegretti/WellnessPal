@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.Log
+import com.bignerdranch.android.wellnesspal.models.WaterLog
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
@@ -28,7 +29,7 @@ class WaterLogViewModel : ViewModel(){
 
     fun writeNewWaterLog(ounces :String) {
         val date = getDate()
-        val waterLog = Log("water", date, null, null, ounces )
-        dataRepository.writeNewLog(waterLog, auth!!.currentUser!!.uid)
+        val waterLog = WaterLog("water", date, ounces )
+        dataRepository.writeNewWaterLog(waterLog, auth!!.currentUser!!.uid)
     }
 }
