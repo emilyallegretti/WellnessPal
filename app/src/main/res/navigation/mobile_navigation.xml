@@ -9,7 +9,37 @@
         android:id="@+id/navigation_petInfo"
         android:name="com.bignerdranch.android.wellnesspal.ui.petinfo.PetInfoFragment"
         android:label="Pet Info"
-        tools:layout="@layout/fragment_pet_info" />
+        tools:layout="@layout/fragment_pet_info" >
+    <action
+        android:id="@+id/to_water_log"
+        app:destination="@id/navigation_water_log" />
+    <action
+        android:id="@+id/to_sleep_log"
+        app:destination="@id/navigation_sleep_log" />
+    <action
+        android:id="@+id/to_food_log"
+        app:destination="@id/navigation_food_log" />
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_water_log"
+        android:name="com.bignerdranch.android.wellnesspal.ui.waterlog.WaterLogFragment"
+        android:label="WaterLog"
+        tools:layout="@layout/fragment_water_log" />
+
+    <fragment
+        android:id="@+id/navigation_food_log"
+        android:name="com.bignerdranch.android.wellnesspal.ui.foodlog.FoodLogFragment"
+        android:label="FoodLog"
+        tools:layout="@layout/fragment_food_log" />
+
+    <fragment
+        android:id="@+id/navigation_sleep_log"
+        android:name="com.bignerdranch.android.wellnesspal.ui.sleeplog.SleepLogFragment"
+        android:label="SleepLog"
+        tools:layout="@layout/fragment_sleep_log" />
 
     <fragment
         android:id="@+id/navigation_logs"

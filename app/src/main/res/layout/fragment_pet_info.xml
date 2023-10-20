@@ -30,11 +30,11 @@
         android:id="@+id/foodLogButton"
         android:layout_width="57dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginBottom="140dp"
         android:src="@drawable/food_log_icon_v2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.067"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageButton
@@ -45,7 +45,7 @@
         app:layout_constraintBottom_toTopOf="@+id/foodLogButton"
         app:layout_constraintEnd_toEndOf="@+id/foodLogButton"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/foodLogButton"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.964" />
 
@@ -53,8 +53,7 @@
         android:id="@+id/sleepLogButton"
         android:layout_width="59dp"
         android:layout_height="58dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="636dp"
+        android:layout_marginTop="20dp"
         android:src="@drawable/sleep_log_icon"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

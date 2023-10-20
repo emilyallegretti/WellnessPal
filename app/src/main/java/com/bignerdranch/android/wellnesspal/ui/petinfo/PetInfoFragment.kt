@@ -9,13 +9,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
+import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentPetInfoBinding
 
 private const val TAG = "PetInfoFragment"
 class PetInfoFragment : Fragment() {
 
     private var _binding: FragmentPetInfoBinding? = null
-
+    private lateinit var petInfoViewModel: PetInfoViewModel
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -25,8 +27,8 @@ class PetInfoFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val petInfoViewModel =
-            ViewModelProvider(this).get(PetInfoViewModel::class.java)
+        petInfoViewModel =
+            ViewModelProvider(this)[PetInfoViewModel::class.java]
 
         _binding = FragmentPetInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
@@ -48,6 +50,20 @@ class PetInfoFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         Log.d(TAG, "OnViewCreated() called")
+
+        binding.apply {
+            foodLogButton.setOnClickListener {
+                findNavController().navigate(R.id.to_food_log)
+            }
+
+            waterLogButton.setOnClickListener {
+                findNavController().navigate(R.id.to_water_log)
+            }
+
+            sleepLogButton.setOnClickListener {
+                findNavController().navigate(R.id.to_sleep_log)
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
