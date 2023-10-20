@@ -55,13 +55,30 @@ class DataRepository private constructor(context: Context) {
         logCount++
         //database.child("logs").child(logCount.toString()).setValue(log)
         //database.child("users").child(uid).child("logs").setValue(log)
-        val logReference = database.child("users").child(uid).child("logs").push()
-        Log.d(TAG, "writing new log at $uid and $logReference")
+        //val logReference = database.child("users/$uid/log").push()
+        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
         Log.d(TAG, "log is $log")
-        logReference.setValue(log).addOnSuccessListener {
+        database.child("users/$uid/log/${logCount.toString()}").setValue(log).addOnSuccessListener {
             Log.d(TAG, "successfully wrote log")
         }.addOnFailureListener{
             Log.d(TAG, "failure writing log")
+            logCount--
+        }
+    }
+
+    fun writeNewEatLog(log: com.bignerdranch.android.wellnesspal.models.EatLog, uid: String) {
+        //do we need to write the log count to the database
+        logCount++
+        //database.child("logs").child(logCount.toString()).setValue(log)
+        //database.child("users").child(uid).child("logs").setValue(log)
+        //val logReference = database.child("users/$uid/log").push()
+        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
+        Log.d(TAG, "log is $log")
+        database.child("users/$uid/log").setValue(log).addOnSuccessListener {
+            Log.d(TAG, "successfully wrote log")
+        }.addOnFailureListener{
+            Log.d(TAG, "failure writing log")
+            logCount--
         }
     }
 
