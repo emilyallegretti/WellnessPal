@@ -55,19 +55,14 @@ class SignInFragment : Fragment() {
             return
         }
     // attempt to sign in with the given email and password, otherwise display error message
-        try {
-            auth.signInWithEmailAndPassword(email, password)
-            if (auth.currentUser != null ) {
+            auth.signInWithEmailAndPassword(email, password).addOnSuccessListener {
                 startActivity(Intent(activity, MainActivity::class.java))
+            }.addOnFailureListener {
+                Toast.makeText(
+                    context,
+                    it.toString(),
+                    Toast.LENGTH_SHORT).show()
             }
-
-        } catch(e: Exception){  //TODO: different catch clauses for each FirebaseAuthException
-            Toast.makeText(
-                context,
-                "Sign-In Failed",
-                Toast.LENGTH_SHORT).show()
-
-        }
     }
 
     // This code was sourced from:

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_begin="206dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -22,16 +22,30 @@
 
     <Button
         android:id="@+id/buttonSignOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="162dp"
-        android:layout_marginEnd="144dp"
-        android:layout_marginBottom="60dp"
+        android:layout_width="117dp"
+        android:layout_height="59dp"
+        android:textSize="17dp"
         android:gravity="center_horizontal"
         android:text="@string/sign_out"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.883" />
+
+    <Button
+        android:id="@+id/buttonDeleteAccount"
+        android:layout_width="94dp"
+        android:layout_height="45dp"
+        android:gravity="center_horizontal"
+        android:text="@string/delete_account"
+        android:textSize="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.936" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -121,7 +135,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/old_password"
+        android:hint="@string/old_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textHeaderChangePassword" />
 
@@ -133,7 +147,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/new_password"
+        android:hint="@string/new_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldOldPassword" />
 
@@ -145,7 +159,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="text"
-        android:text="@string/repeat_new_password"
+        android:hint="@string/repeat_new_password"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldNewPassword" />
 
@@ -177,7 +191,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/water"
+        android:hint="@string/water"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldOldPassword"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textHeaderChangeGoals" />
@@ -189,7 +203,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/meals"
+        android:hint="@string/meals"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldNewPassword"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeWater" />
@@ -201,7 +215,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:inputType="number"
-        android:text="@string/sleep"
+        android:hint="@string/sleep"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldReEnterNewPass"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeMeals" />
@@ -275,6 +289,7 @@
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/textViewHeaderPetsGraduated"
         app:layout_constraintTop_toBottomOf="@id/textViewFieldUsername" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

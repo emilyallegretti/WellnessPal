@@ -20,10 +20,14 @@ class ProfileViewModel : ViewModel() {
     val userData = MutableLiveData<User>()
 
 
+
     /*
     Add event listener to the current user in the database
     Add data read into live data
      */
+
+// todo: move all queries to dataRepository
+
     fun addUserEventListener(userReference: DatabaseReference){
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
@@ -68,6 +72,14 @@ class ProfileViewModel : ViewModel() {
             }
         }
         return false
+    }
+    // delete the user's entry in the database
+    fun deleteUserEntry() {
+        dataRepository.deleteUser(auth.currentUser!!.uid)
+    }
+
+    fun updateGoal(newVal:String, goalType: String) {
+        dataRepository.updateGoal(newVal, goalType, auth.currentUser!!.uid)
     }
 
 }

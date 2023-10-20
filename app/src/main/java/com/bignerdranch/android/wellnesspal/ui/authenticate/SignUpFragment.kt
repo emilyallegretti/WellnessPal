@@ -75,26 +75,23 @@ class SignUpFragment: Fragment() {
     }
 
     private fun signUp(email: String, password: String, fname: String, lname: String, waterGoal: String, mealGoal: String, sleepGoal:String) {
-        try {
             if (!validateForm()) {
                 return
             }
             //todo: hash password
             // if sign-up successful, start MainActivity
-            auth.createUserWithEmailAndPassword(email, password)
-            if (auth.currentUser != null) {
+            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 Log.d("SignUpFragment", "current signed in user: "+ auth.currentUser!!.uid)
                 signUpViewModel.writeUser(email, password, fname,lname)
                 signUpViewModel.writeGoal(waterGoal, mealGoal, sleepGoal)
                 startActivity(Intent(activity, MainActivity::class.java))
-            }
-        } catch(e: Exception){  //TODO: different catch clauses for each FirebaseAuthException possible
+            }.addOnFailureListener{
                 Toast.makeText(
                     context,
-                    "Error creating new user",
+                    it.toString(),
                     Toast.LENGTH_SHORT).show()
-
             }
+
     }
 
 }

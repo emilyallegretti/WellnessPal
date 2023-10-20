@@ -28,5 +28,6 @@
     <string name="water">Water</string>
     <string name="meals">Meals</string>
     <string name="ok">OK</string>
+    <string name="delete_account">Delete Account</string>
 
 </resources>
