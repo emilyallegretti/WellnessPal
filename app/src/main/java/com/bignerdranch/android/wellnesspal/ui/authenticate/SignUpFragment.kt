@@ -3,6 +3,7 @@ package com.bignerdranch.android.wellnesspal.ui.authenticate
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,7 @@ class SignUpFragment: Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private lateinit var auth : FirebaseAuth
     private lateinit var signUpViewModel: SignUpViewModel
-
+// todo: comments
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -42,7 +43,8 @@ class SignUpFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             buttonSignUp.setOnClickListener {
-                signUp(fieldEmail.text.toString(), fieldPassword.text.toString())
+                signUp(fieldEmail.text.toString(), fieldPassword.text.toString(), fieldFname.text.toString(), fieldLname.text.toString(),
+                    fieldWaterGoal.text.toString(), fieldFoodGoal.text.toString(), fieldSleepGoal.text.toString())
             }
         }
 
@@ -62,35 +64,34 @@ class SignUpFragment: Fragment() {
         } else {
             binding.fieldEmail.error = null
         }
-
+//todo: validate rest of form
         if (TextUtils.isEmpty(binding.fieldPassword.text.toString())) {
             binding.fieldPassword.error = "Required"
             result = false
         } else {
             binding.fieldPassword.error = null
         }
-
         return result
     }
 
-    private fun signUp(email: String, password: String) {
-        try {
+    private fun signUp(email: String, password: String, fname: String, lname: String, waterGoal: String, mealGoal: String, sleepGoal:String) {
             if (!validateForm()) {
                 return
             }
+            //todo: hash password
             // if sign-up successful, start MainActivity
-            auth.createUserWithEmailAndPassword(email, password)
-            if (auth.currentUser != null) {
+            auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
+                Log.d("SignUpFragment", "current signed in user: "+ auth.currentUser!!.uid)
+                signUpViewModel.writeUser(email, password, fname,lname)
+                signUpViewModel.writeGoal(waterGoal, mealGoal, sleepGoal)
                 startActivity(Intent(activity, MainActivity::class.java))
-                signUpViewModel.writeNewUser(email, password, auth.currentUser!!.uid)
-            }
-        } catch(e: FirebaseAuthException){  //TODO: different catch clauses for each FirebaseAuthException possible
+            }.addOnFailureListener{
                 Toast.makeText(
                     context,
-                    "Error creating new user",
+                    it.toString(),
                     Toast.LENGTH_SHORT).show()
-
             }
+
     }
 
 }
