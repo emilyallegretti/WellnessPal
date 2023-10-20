@@ -43,9 +43,10 @@ class DataRepository private constructor(context: Context) {
         logCount++
         //database.child("logs").child(logCount.toString()).setValue(log)
         //database.child("users").child(uid).child("logs").setValue(log)
-        Log.d(TAG, "writing new log at $uid")
+        val logReference = database.child("users").child(uid).child("logs").push()
+        Log.d(TAG, "writing new log at $uid and $logReference")
         Log.d(TAG, "log is $log")
-        database.child("users").child(uid).child("logs").setValue(log).addOnSuccessListener {
+        logReference.setValue(log).addOnSuccessListener {
             Log.d(TAG, "successfully wrote log")
         }.addOnFailureListener{
             Log.d(TAG, "failure writing log")
