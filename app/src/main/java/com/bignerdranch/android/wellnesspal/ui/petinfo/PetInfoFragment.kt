@@ -52,12 +52,13 @@ class PetInfoFragment : Fragment() {
         Log.d(TAG, "OnViewCreated() called")
 
         binding.apply {
-            foodLogButton.setOnClickListener {
-                findNavController().navigate(R.id.to_food_log)
-            }
 
             waterLogButton.setOnClickListener {
                 findNavController().navigate(R.id.to_water_log)
+            }
+
+            foodLogButton.setOnClickListener {
+                findNavController().navigate(R.id.to_food_log)
             }
 
             sleepLogButton.setOnClickListener {

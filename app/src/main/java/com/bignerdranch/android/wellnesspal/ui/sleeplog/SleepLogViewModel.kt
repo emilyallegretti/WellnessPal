@@ -5,12 +5,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.Log
+import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Date
 
 class SleepLogViewModel : ViewModel(){
 
     private val dataRepository = DataRepository.get()
+    private val auth = FirebaseAuth.getInstance()
 
     private val _text = MutableLiveData<String>().apply {
         value = "Enter the number of hours slept"
@@ -26,6 +28,6 @@ class SleepLogViewModel : ViewModel(){
         val date = getDate()
         val sleepLog = Log("sleep", date, hours , null, null )
 
-        dataRepository.writeNewLog(sleepLog)
+        dataRepository.writeNewLog(sleepLog, auth!!.currentUser!!.uid)
     }
 }

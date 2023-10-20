@@ -31,9 +31,9 @@ class WaterLogFragment : Fragment() {
 
         val textView: TextView = binding.textWaterLog
 
-        waterLogViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+//        waterLogViewModel.text.observe(viewLifecycleOwner) {
+//            textView.text = it
+//        }
         return root
     }
 

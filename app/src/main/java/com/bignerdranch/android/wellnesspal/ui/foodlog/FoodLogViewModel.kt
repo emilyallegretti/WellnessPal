@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.Log
+import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Date
 
@@ -12,6 +13,7 @@ import java.util.Date
 class FoodLogViewModel : ViewModel(){
 
     private val dataRepository = DataRepository.get()
+    private val auth = FirebaseAuth.getInstance()
 
     private val _text = MutableLiveData<String>().apply {
         value = "Enter the number of meals eaten"
@@ -27,6 +29,6 @@ class FoodLogViewModel : ViewModel(){
         val date = getDate()
         val foodLog = Log("food", date, null, meals, null )
 
-        dataRepository.writeNewLog(foodLog)
+        dataRepository.writeNewLog(foodLog, auth!!.currentUser!!.uid )
     }
 }

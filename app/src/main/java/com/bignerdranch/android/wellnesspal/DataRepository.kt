@@ -38,9 +38,18 @@ class DataRepository private constructor(context: Context) {
     }
 
     // Write a new Log.
-    fun writeNewLog(log: com.bignerdranch.android.wellnesspal.models.Log) {
+    fun writeNewLog(log: com.bignerdranch.android.wellnesspal.models.Log, uid: String) {
+        //do we need to write the log count to the database
         logCount++
-        database.child("logs").child(logCount.toString()).setValue(log)
+        //database.child("logs").child(logCount.toString()).setValue(log)
+        //database.child("users").child(uid).child("logs").setValue(log)
+        Log.d(TAG, "writing new log at $uid")
+        Log.d(TAG, "log is $log")
+        database.child("users").child(uid).child("logs").setValue(log).addOnSuccessListener {
+            Log.d(TAG, "successfully wrote log")
+        }.addOnFailureListener{
+            Log.d(TAG, "failure writing log")
+        }
     }
 
     companion object {
