@@ -27,14 +27,7 @@ class WaterLogFragment : Fragment() {
             ViewModelProvider(this)[WaterLogViewModel::class.java]
 
         _binding = FragmentWaterLogBinding.inflate(inflater, container, false)
-        val root: View = binding.root
-
-        val textView: TextView = binding.textWaterLog
-
-//        waterLogViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-        return root
+        return binding.root
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +40,7 @@ class WaterLogFragment : Fragment() {
             buttonSubmitWaterLog.setOnClickListener {
                 waterLogViewModel.writeNewWaterLog(fieldWaterLog.text.toString())
             }
+
         }
     }
 

@@ -5,7 +5,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.EatLog
-import com.bignerdranch.android.wellnesspal.models.Log
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Date

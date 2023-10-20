@@ -2,7 +2,9 @@ package com.bignerdranch.android.wellnesspal
 
 import android.content.Context
 import android.util.Log
+import com.bignerdranch.android.wellnesspal.models.EatLog
 import com.bignerdranch.android.wellnesspal.models.Goal
+import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.bignerdranch.android.wellnesspal.models.User
 import com.bignerdranch.android.wellnesspal.models.WaterLog
 
@@ -50,68 +52,54 @@ class DataRepository private constructor(context: Context) {
         getLogCount(database, uid)
     }
 
-    // Write a new Log.
-//    fun writeNewLog(log: com.bignerdranch.android.wellnesspal.models.Log, uid: String) {
-//        //do we need to write the log count to the database
-//        logCount++
-//        //database.child("logs").child(logCount.toString()).setValue(log)
-//        //database.child("users").child(uid).child("logs").setValue(log)
-//        //val logReference = database.child("users/$uid/log").push()
-//        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
-//        Log.d(TAG, "log is $log")
-//        database.child("users/$uid/log/${logCount.toString()}").setValue(log).addOnSuccessListener {
-//            Log.d(TAG, "successfully wrote log")
-//        }.addOnFailureListener{
-//            Log.d(TAG, "failure writing log")
-//            logCount--
-//        }
-//    }
-
-    fun writeNewEatLog(log: com.bignerdranch.android.wellnesspal.models.EatLog, uid: String) {
-        //do we need to write the log count to the database
-        logCount++
-        //database.child("logs").child(logCount.toString()).setValue(log)
-        //database.child("users").child(uid).child("logs").setValue(log)
-        //val logReference = database.child("users/$uid/log").push()
-        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
+    fun writeNewEatLog(log: EatLog, uid: String) {
+        //outputs appear in logcat to show log info
+        Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
-        database.child("users/$uid/log").setValue(log).addOnSuccessListener {
+
+        //push creates the key for the new log in the db
+        //logRef holds the db reference to that key
+        val logRef = database.child("users").child(uid).child("logs").push()
+
+        //set the value at the key to the values in log (EatLog object)
+        logRef.setValue(log).addOnSuccessListener {
             Log.d(TAG, "successfully wrote log")
         }.addOnFailureListener{
             Log.d(TAG, "failure writing log")
-            logCount--
         }
     }
 
     fun writeNewWaterLog(log: WaterLog, uid: String) {
-        //do we need to write the log count to the database
-        logCount++
-        //database.child("logs").child(logCount.toString()).setValue(log)
-        //database.child("users").child(uid).child("logs").setValue(log)
-        //val logReference = database.child("users/$uid/log").push()
-        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
+        //outputs appear in logcat to show log info
+        Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
-        database.child("users/$uid/log").setValue(log).addOnSuccessListener {
+
+        //push creates the key for the new log in the db
+        //logRef holds the db reference to that key
+        val logRef = database.child("users").child(uid).child("logs").push()
+
+        //set the value at the key to the values in log (WaterLog object)
+        logRef.setValue(log).addOnSuccessListener {
             Log.d(TAG, "successfully wrote log")
         }.addOnFailureListener{
             Log.d(TAG, "failure writing log")
-            logCount--
         }
     }
 
-    fun writeNewSleepLog(log: com.bignerdranch.android.wellnesspal.models.SleepLog, uid: String) {
-        //do we need to write the log count to the database
-        logCount++
-        //database.child("logs").child(logCount.toString()).setValue(log)
-        //database.child("users").child(uid).child("logs").setValue(log)
-        //val logReference = database.child("users/$uid/log").push()
-        Log.d(TAG, "writing new log at $uid and log count $logCount")//and $logReference")
+    fun writeNewSleepLog(log: SleepLog, uid: String) {
+        //outputs appear in logcat to show log info
+        Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
-        database.child("users/$uid/log").setValue(log).addOnSuccessListener {
+
+        //push creates the key for the new log in the db
+        //logRef holds the db reference to that key
+        val logRef = database.child("users").child(uid).child("logs").push()
+
+        //set the value at the key to the values in log (SleepLog object)
+        logRef.setValue(log).addOnSuccessListener {
             Log.d(TAG, "successfully wrote log")
         }.addOnFailureListener{
             Log.d(TAG, "failure writing log")
-            logCount--
         }
     }
 
