@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.wellnesspal.databinding.FragmentWaterLogBinding
 
 
@@ -32,13 +34,26 @@ class WaterLogFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        val callback = requireActivity().onBackPressedDispatcher.addCallback(this){
+            findNavController().popBackStack()
+        }
     }
+
+
+
+//    override fun onBackPressCallback(){
+//        findNavController().popBackStack()
+//    }
+
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             buttonSubmitWaterLog.setOnClickListener {
                 waterLogViewModel.writeNewWaterLog(fieldWaterLog.text.toString())
+                findNavController().popBackStack()
             }
 
         }

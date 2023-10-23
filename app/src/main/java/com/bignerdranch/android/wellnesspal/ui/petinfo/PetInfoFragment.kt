@@ -55,6 +55,7 @@ class PetInfoFragment : Fragment() {
 
             waterLogButton.setOnClickListener {
                 findNavController().navigate(R.id.to_water_log)
+
             }
 
             foodLogButton.setOnClickListener {

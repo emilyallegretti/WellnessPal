@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.wellnesspal.databinding.FragmentSleepLogBinding
 import com.bignerdranch.android.wellnesspal.ui.foodlog.FoodLogViewModel
 import com.bignerdranch.android.wellnesspal.ui.sleeplog.SleepLogViewModel
@@ -47,6 +48,7 @@ class SleepLogFragment : Fragment() {
         binding.apply {
             buttonSubmitSleepLog.setOnClickListener {
                 sleepLogViewModel.writeNewSleepLog(fieldSleepLog.text.toString())
+                findNavController().popBackStack()
             }
         }
     }
