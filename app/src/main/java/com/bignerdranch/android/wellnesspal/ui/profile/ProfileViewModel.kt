@@ -12,7 +12,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.getValue
-
+private const val TAG = "ProfileViewModel"
 class ProfileViewModel : ViewModel() {
     private val dataRepository = DataRepository.get()
     private var auth = FirebaseAuth.getInstance()
@@ -39,8 +39,10 @@ class ProfileViewModel : ViewModel() {
                 }
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+                //write a log message if a read failed
+                Log.d(TAG, "loadUser: onCancelled", error.toException())
             }
+
         }
         userReference.addValueEventListener(userListener)
     }
