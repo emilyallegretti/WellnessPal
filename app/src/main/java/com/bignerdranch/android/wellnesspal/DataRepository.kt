@@ -127,10 +127,10 @@ class DataRepository private constructor(context: Context) {
         database.child("users/$uid/goal/$targetChild").setValue(newVal)
     }
 
-    fun updatePassword(uid: String, newPassword: String){
-        userAuth!!.updatePassword(newPassword)
-        //TODO add on completion listeners
-    }
+//    fun updatePassword(uid: String, newPassword: String){
+//        userAuth!!.updatePassword(newPassword)
+//        //TODO add on completion listeners
+//    }
 
     companion object {
         private var INSTANCE: DataRepository? = null

@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="206dp" />
+        app:layout_constraintGuide_percent="0.5" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -27,7 +27,7 @@
         android:textSize="17dp"
         android:gravity="center_horizontal"
         android:text="@string/sign_out"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline6"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -117,62 +117,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderUsername" />
 
-    <TextView
-        android:id="@+id/textHeaderChangePassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
-        android:text="@string/change_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHeaderPetsGraduated" />
-
-    <EditText
-        android:id="@+id/editTextFieldOldPassword"
-        android:layout_width="183dp"
-        android:layout_height="43dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/old_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textHeaderChangePassword" />
-
-    <EditText
-        android:id="@+id/editTextFieldNewPassword"
-        android:layout_width="185dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/new_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFieldOldPassword" />
-
-    <EditText
-        android:id="@+id/editTextFieldReEnterNewPass"
-        android:layout_width="181dp"
-        android:layout_height="46dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="15dp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="@string/repeat_new_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFieldNewPassword" />
 
     <Button
         android:id="@+id/buttonResetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/reset_password"
-        app:layout_constraintEnd_toEndOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline3"
-        app:layout_constraintTop_toBottomOf="@+id/editTextFieldReEnterNewPass" />
+        app:layout_constraintTop_toBottomOf="@id/buttonSignOut"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"  />
 
     <TextView
         android:id="@+id/textHeaderChangeGoals"

@@ -56,12 +56,6 @@ class ProfileFragment : Fragment() {
             textViewFieldLastName.text = it.lname
             textViewFieldUsername.text = it.email
             textViewFieldPetsGraduated.text = "Adding Later"
-
-            val textView: TextView = binding.textViewFieldUsername
-            profileViewModel.userData.observe(viewLifecycleOwner) {
-                textView.text = it.email.toString()
-
-            }
         }
             return root
     }
@@ -86,21 +80,16 @@ class ProfileFragment : Fragment() {
                     }
                 }
 
-                buttonResetPassword.setOnClickListener {
-                    if (auth.currentUser != null) {
-                        val bool = profileViewModel.resetPassword(
-                            editTextFieldOldPassword.toString(),
-                            editTextFieldNewPassword.toString(),
-                            editTextFieldReEnterNewPass.toString()
-                        )
-                        if (!bool) {
-                            Toast.makeText(
-                                context,
-                                "Cannot Reset Password, Try Again",
-                                Toast.LENGTH_LONG
-                            )
-                        }
-                    }
+            buttonResetPassword.setOnClickListener {
+                auth.sendPasswordResetEmail(auth.currentUser!!.email.toString())
+                        .addOnCompleteListener {task ->
+                            if(task.isSuccessful){
+                                Log.d(TAG, "Email Send Success")
+                                Toast.makeText(context, "Password Reset Email Sent", Toast.LENGTH_SHORT).show()
+                            }else{
+                                Log.d(TAG, "Email Send Failure")
+                                Toast.makeText(context, "Unable to Send Password Reset Email", Toast.LENGTH_SHORT).show()
+                            }
                 }
                 buttonDeleteAccount.setOnClickListener {
                     // first reauthenticate user TODO: ask user to re-enter credentials
