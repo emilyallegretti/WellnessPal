@@ -57,40 +57,45 @@ class ProfileFragment : Fragment() {
             textViewFieldUsername.text = it.email
             textViewFieldPetsGraduated.text = "Adding Later"
         }
-            return root
+        return root
     }
 
-        override fun onCreate(savedInstanceState: Bundle?) {
-            super.onCreate(savedInstanceState)
-            auth = FirebaseAuth.getInstance()
-        }
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        auth = FirebaseAuth.getInstance()
+    }
 
-        override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-            super.onViewCreated(view, savedInstanceState)
-            profileViewModel.addUserEventListener(userReference)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        profileViewModel.addUserEventListener(userReference)
 
-            binding.apply {
-                // when user signs out, return to the initial AuthActivity screen
-                buttonSignOut.setOnClickListener {
-                    auth.signOut()
-                    if (auth.currentUser == null) {
-                        startActivity(Intent(activity, AuthActivity::class.java))
-                    } else {
-                        Toast.makeText(context, "Error Signing Out", Toast.LENGTH_SHORT)
-                    }
+        binding.apply {
+            // when user signs out, return to the initial AuthActivity screen
+            buttonSignOut.setOnClickListener {
+                auth.signOut()
+                if (auth.currentUser == null) {
+                    startActivity(Intent(activity, AuthActivity::class.java))
+                } else {
+                    Toast.makeText(context, "Error Signing Out", Toast.LENGTH_SHORT)
                 }
+            }
 
             buttonResetPassword.setOnClickListener {
                 auth.sendPasswordResetEmail(auth.currentUser!!.email.toString())
-                        .addOnCompleteListener {task ->
-                            if(task.isSuccessful){
-                                Log.d(TAG, "Email Send Success")
-                                Toast.makeText(context, "Password Reset Email Sent", Toast.LENGTH_SHORT).show()
-                            }else{
-                                Log.d(TAG, "Email Send Failure")
-                                Toast.makeText(context, "Unable to Send Password Reset Email", Toast.LENGTH_SHORT).show()
-                            }
-                }
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Log.d(TAG, "Email Send Success")
+                            Toast.makeText(context, "Password Reset Email Sent", Toast.LENGTH_SHORT)
+                                .show()
+                        } else {
+                            Log.d(TAG, "Email Send Failure")
+                            Toast.makeText(
+                                context,
+                                "Unable to Send Password Reset Email",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    }
                 buttonDeleteAccount.setOnClickListener {
                     // first reauthenticate user TODO: ask user to re-enter credentials
                     // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
@@ -112,7 +117,7 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-
+    }
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
@@ -129,5 +134,7 @@ class ProfileFragment : Fragment() {
                 Log.d(TAG, "failure deleting user from Firebase Auth", it)
             }
         }
-    }
+}
+
+
 

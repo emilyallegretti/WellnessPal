@@ -47,44 +47,6 @@ class ProfileViewModel : ViewModel() {
         userReference.addValueEventListener(userListener)
     }
 
-    /*
-    Used when a user tries to reset their password
-    Compares their current password in the db
-        with the value they entered as their old password
-    If the passwords match, return true
-    If the passwords don't match, return false
-     */
-//    private fun passwordCompare(enteredPassword: String): Boolean{
-//        if (userData.value!!.hashedPass == enteredPassword) {
-//            return true
-//        }
-//        return false
-//    }
-
-    /*
-    Function called when a user wants to reset their password
-    Return value tells the fragment what to display in a toast
-     */
-//    fun resetPassword(oldPassword: String, newPassword: String, reEnteredNewPass: String): Boolean{
-//        //check that
-//        if (passwordCompare(oldPassword)) {
-//            if (newPassword == reEnteredNewPass) {
-//                dataRepository.updatePassword(auth.currentUser!!.uid, newPassword)
-//                return true
-//            }
-//        }
-//        return false
-//    }
-    fun resetPassword(oldPassword: String, newPassword: String, reEnteredNewPass: String): Boolean{
-        //check that
-        if (passwordCompare(oldPassword)) {
-            if (newPassword == reEnteredNewPass) {
-                dataRepository.updatePassword(auth.currentUser!!.uid, newPassword)
-                return true
-            }
-        }
-        return false
-    }
     // delete the user's entry in the database
     fun deleteUserEntry() {
         dataRepository.deleteUser(auth.currentUser!!.uid)
