@@ -121,6 +121,7 @@ class ProfileFragment : Fragment() {
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
+            //TODO detatch event listner
         }
 
         private fun deleteAccount() {

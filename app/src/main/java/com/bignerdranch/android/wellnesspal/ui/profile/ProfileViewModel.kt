@@ -32,6 +32,7 @@ class ProfileViewModel : ViewModel() {
         val userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 val user = dataSnapshot.getValue<User>()
+                Log.d(TAG, user.toString())
 
                 //update the liveData with the new value from the listener
                 user?.let {
