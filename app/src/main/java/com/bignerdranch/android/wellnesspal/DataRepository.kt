@@ -6,6 +6,7 @@ import com.bignerdranch.android.wellnesspal.models.EatLog
 import com.bignerdranch.android.wellnesspal.models.Goal
 import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.bignerdranch.android.wellnesspal.models.User
+import com.bignerdranch.android.wellnesspal.models.UserLog
 import com.bignerdranch.android.wellnesspal.models.WaterLog
 
 import com.google.firebase.auth.FirebaseAuth
@@ -52,7 +53,7 @@ class DataRepository private constructor(context: Context) {
         getLogCount(database, uid)
     }
 
-    fun writeNewEatLog(log: EatLog, uid: String) {
+    fun writeNewEatLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
@@ -69,7 +70,7 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
-    fun writeNewWaterLog(log: WaterLog, uid: String) {
+    fun writeNewWaterLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
@@ -86,7 +87,7 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
-    fun writeNewSleepLog(log: SleepLog, uid: String) {
+    fun writeNewSleepLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")

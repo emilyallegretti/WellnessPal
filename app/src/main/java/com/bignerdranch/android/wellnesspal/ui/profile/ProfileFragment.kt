@@ -121,8 +121,15 @@ class ProfileFragment : Fragment() {
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
-            //TODO detatch event listner
         }
+
+    override fun onDestroy() {
+        super.onDestroy()
+//        Log.d(TAG, profileViewModel.userListener.toString())
+        userReference.removeEventListener(profileViewModel.userListener)
+//        Log.d(TAG, "Detatching event listener")
+//        Log.d(TAG, profileViewModel.userListener.toString())
+    }
 
         private fun deleteAccount() {
             profileViewModel.deleteUserEntry()
