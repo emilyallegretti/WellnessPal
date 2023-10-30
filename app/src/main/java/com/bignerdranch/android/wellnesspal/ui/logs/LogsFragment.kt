@@ -49,8 +49,6 @@ class LogsFragment : Fragment() {
         _binding = FragmentLogsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-
-
         return root
     }
 
@@ -65,17 +63,9 @@ class LogsFragment : Fragment() {
 //        Log.d(TAG, logsList.toString())
 
         lifecycleScope.launch {
-            logsViewModel.logData.observe(viewLifecycleOwner) { list ->
-                list?.let {
-                    Log.d(TAG, list.toString())
-                    for (item in list) {
-                        logsList.add(item)
-                        Log.d(TAG, item.toString())
-                        Log.d(TAG, logsList.toString())
-                    }
-                }
-            }
+            observeData()
         }
+
 
 
         Log.d(TAG, "logList")
@@ -84,6 +74,19 @@ class LogsFragment : Fragment() {
         adapter = LogListAdapter(logsList)
         binding.logsRecyclerView.adapter = adapter
 
+    }
+
+    suspend fun observeData(){
+        logsViewModel.logData.observe(viewLifecycleOwner) { list ->
+            list?.let {
+                Log.d(TAG, list.toString())
+                for (item in list) {
+                    logsList.add(item)
+                    Log.d(TAG, item.toString())
+                    Log.d(TAG, logsList.toString())
+                }
+            }
+        }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
