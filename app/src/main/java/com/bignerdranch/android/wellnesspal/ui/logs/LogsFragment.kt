@@ -61,32 +61,37 @@ class LogsFragment : Fragment() {
 
 //        Log.d(TAG, "Log list after observer")
 //        Log.d(TAG, logsList.toString())
+        Log.d(TAG, "right before lifecycle launch")
+        observeData {
+            Log.d(TAG, "inside lifecycle launch")
+            //Log.d(TAG, "inside observe data ")
+            logsViewModel.logData.observe(viewLifecycleOwner) { list ->
+                list?.let {
+                    Log.d(TAG, list.toString())
+                    for (item in list) {
+                        logsList.add(item)
+                        Log.d(TAG, item.toString())
+                        Log.d(TAG, logsList.toString())
+                    }
+                }
+            }
+            Log.d(TAG, "logList")
+            Log.d(TAG, logsList.toString())
 
-        lifecycleScope.launch {
-            observeData()
+            Log.d(TAG, "creating adapter")
+            adapter = LogListAdapter(logsList)
+            binding.logsRecyclerView.adapter = adapter
+
         }
 
 
 
-        Log.d(TAG, "logList")
-        Log.d(TAG, logsList.toString())
-
-        adapter = LogListAdapter(logsList)
-        binding.logsRecyclerView.adapter = adapter
 
     }
 
-    suspend fun observeData(){
-        logsViewModel.logData.observe(viewLifecycleOwner) { list ->
-            list?.let {
-                Log.d(TAG, list.toString())
-                for (item in list) {
-                    logsList.add(item)
-                    Log.d(TAG, item.toString())
-                    Log.d(TAG, logsList.toString())
-                }
-            }
-        }
+    private fun observeData(callback:() -> Unit){
+        Log.d(TAG, "inside observe data ")
+        callback()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
