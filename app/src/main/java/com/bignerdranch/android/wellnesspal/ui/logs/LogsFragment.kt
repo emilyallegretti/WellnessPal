@@ -36,7 +36,7 @@ class LogsFragment : Fragment() {
     private var database = Firebase.database.reference
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var logsReference = database.child("users").child(auth.currentUser!!.uid).child("logs")
-    val logsList = mutableListOf<UserLog>()
+    private lateinit var logsList : List<UserLog>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -47,6 +47,8 @@ class LogsFragment : Fragment() {
             ViewModelProvider(this).get(LogsViewModel::class.java)
 
         _binding = FragmentLogsBinding.inflate(inflater, container, false)
+        binding.logsRecyclerView.layoutManager = LinearLayoutManager(context)
+
         val root: View = binding.root
 
         return root
@@ -57,34 +59,39 @@ class LogsFragment : Fragment() {
 
         logsViewModel.addLogEventListener(logsReference)
 
-        binding.logsRecyclerView.layoutManager = LinearLayoutManager(context)
+        //binding.logsRecyclerView.layoutManager = LinearLayoutManager(context)
 
 //        Log.d(TAG, "Log list after observer")
 //        Log.d(TAG, logsList.toString())
-        Log.d(TAG, "right before lifecycle launch")
-        observeData {
-            Log.d(TAG, "inside lifecycle launch")
-            //Log.d(TAG, "inside observe data ")
-            logsViewModel.logData.observe(viewLifecycleOwner) { list ->
-                list?.let {
-                    Log.d(TAG, list.toString())
-                    for (item in list) {
-                        logsList.add(item)
-                        Log.d(TAG, item.toString())
-                        Log.d(TAG, logsList.toString())
-                    }
-                }
+       // Log.d(TAG, "right before lifecycle launch")
+//        observeData {
+//            Log.d(TAG, "inside lifecycle launch")
+//            //Log.d(TAG, "inside observe data ")
+//            logsViewModel.logData.observe(viewLifecycleOwner) { list ->
+//                list?.let {
+//                    Log.d(TAG, list.toString())
+//                    for (item in list) {
+//                        logsList.add(item)
+//                        Log.d(TAG, item.toString())
+//                        Log.d(TAG, logsList.toString())
+//                    }
+//                }
+//            }
+
+            logsViewModel.logData.observe(viewLifecycleOwner) {
+                logsList = logsViewModel.logData.value!!
+                adapter = LogListAdapter(logsList)
+                binding.logsRecyclerView.adapter = adapter
             }
-            Log.d(TAG, "logList")
-            Log.d(TAG, logsList.toString())
+//            Log.d(TAG, "logList")
+//            Log.d(TAG, logsList.toString())
+//
+//            Log.d(TAG, "creating adapter")
+//            adapter = LogListAdapter(logsList)
 
-            Log.d(TAG, "creating adapter")
-            adapter = LogListAdapter(logsList)
-            binding.logsRecyclerView.adapter = adapter
+            //adapter.notifyDataSetChanged()
 
-        }
-
-
+            //binding.logsRecyclerView.adapter = adapter
 
 
     }

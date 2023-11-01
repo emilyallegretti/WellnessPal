@@ -16,7 +16,7 @@ class LogHolder (
         }
 }
 
-class LogListAdapter(private val logs: MutableList<UserLog>): RecyclerView.Adapter<LogHolder>(){
+class LogListAdapter(private val logs: List<UserLog>): RecyclerView.Adapter<LogHolder>(){
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LogHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ListItemLogBinding.inflate(inflater, parent, false)
@@ -30,8 +30,8 @@ class LogListAdapter(private val logs: MutableList<UserLog>): RecyclerView.Adapt
         holder.bind(log)
     }
     fun setLogs(newLogs: List<UserLog>){
-        logs.clear()
-        logs.addAll(newLogs)
+        //logs.clear()
+        //logs.addAll(newLogs)
         notifyDataSetChanged()
     }
 }
