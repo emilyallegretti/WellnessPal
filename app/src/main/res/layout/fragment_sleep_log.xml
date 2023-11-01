@@ -33,7 +33,7 @@
         android:textAlignment="center"
         app:layout_constraintWidth_percent="0.45"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/guideline14"
         app:layout_constraintStart_toEndOf="@id/guideline11"
         app:layout_constraintEnd_toStartOf="@id/guideline12"
         app:layout_constraintTop_toBottomOf="@+id/text_sleep_log"
