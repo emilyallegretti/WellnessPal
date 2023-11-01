@@ -59,40 +59,15 @@ class LogsFragment : Fragment() {
 
         logsViewModel.addLogEventListener(logsReference)
 
-        //binding.logsRecyclerView.layoutManager = LinearLayoutManager(context)
-
-//        Log.d(TAG, "Log list after observer")
-//        Log.d(TAG, logsList.toString())
-       // Log.d(TAG, "right before lifecycle launch")
-//        observeData {
-//            Log.d(TAG, "inside lifecycle launch")
-//            //Log.d(TAG, "inside observe data ")
-//            logsViewModel.logData.observe(viewLifecycleOwner) { list ->
-//                list?.let {
-//                    Log.d(TAG, list.toString())
-//                    for (item in list) {
-//                        logsList.add(item)
-//                        Log.d(TAG, item.toString())
-//                        Log.d(TAG, logsList.toString())
-//                    }
-//                }
-//            }
-
             logsViewModel.logData.observe(viewLifecycleOwner) {
-                logsList = logsViewModel.logData.value!!
-                adapter = LogListAdapter(logsList)
+                //logsList = it
+                adapter = LogListAdapter(it)
+                //Log.d(TAG, "Log List")
+                //Log.d(TAG, logsList.toString())
+                //Log.d(TAG, "Live Data list")
+                //Log.d(TAG, logsViewModel.logData.value.toString())
                 binding.logsRecyclerView.adapter = adapter
             }
-//            Log.d(TAG, "logList")
-//            Log.d(TAG, logsList.toString())
-//
-//            Log.d(TAG, "creating adapter")
-//            adapter = LogListAdapter(logsList)
-
-            //adapter.notifyDataSetChanged()
-
-            //binding.logsRecyclerView.adapter = adapter
-
 
     }
 

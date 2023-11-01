@@ -33,7 +33,7 @@ class LogsViewModel : ViewModel() {
 
 //                val userLog = dataSnapshot.getValue<Log>()
 //                Log.d(TAG, userLog.toString())
-
+                logs.clear()
                 for (logSnapshot in dataSnapshot.children){
                     val log = logSnapshot.getValue<UserLog>()
                     //Log.d(TAG, log.toString())
