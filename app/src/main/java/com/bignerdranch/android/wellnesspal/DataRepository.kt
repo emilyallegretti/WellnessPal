@@ -136,7 +136,11 @@ class DataRepository private constructor(context: Context) {
     fun updateGoal(newVal:String, goalType: String, uid: String) {
         Log.d(TAG, "updating $goalType goal")
         val targetChild = goalType + "Goal"     // create child node name to be updated
-        database.child("users/$uid/goal/$targetChild").setValue(newVal)
+        database.child("users/$uid/goal/$targetChild").setValue(newVal).addOnSuccessListener {
+            Log.d(TAG, "successfully updated goal")
+        }.addOnFailureListener{
+            Log.d(TAG, "Failed to update goal")
+        }
     }
 
 //    fun updatePassword(uid: String, newPassword: String){
