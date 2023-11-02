@@ -24,14 +24,14 @@
         android:id="@+id/buttonSignOut"
         android:layout_width="117dp"
         android:layout_height="59dp"
-        android:textSize="17dp"
         android:gravity="center_horizontal"
         android:text="@string/sign_out"
+        android:textSize="17dp"
         app:layout_constraintBottom_toTopOf="@id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/editTextFieldChangeSleep"
+        app:layout_constraintVertical_bias="0.20" />
 
     <Button
         android:id="@+id/buttonDeleteAccount"
@@ -41,11 +41,11 @@
         android:text="@string/delete_account"
         android:textSize="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintTop_toBottomOf="@id/buttonResetPassword"
+        app:layout_constraintVertical_bias="0.15" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -81,21 +81,23 @@
         android:id="@+id/textViewHeaderFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        app:layout_constraintVertical_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.5"
         android:text="@string/first_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewHeaderLastName"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintTop_toBottomOf="@id/guideline21"/>
 
     <TextView
         android:id="@+id/textViewHeaderLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/last_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewHeaderFirstName" />
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@+id/textViewHeaderFirstName"
+        app:layout_constraintBottom_toTopOf="@+id/textViewHeaderUsername"/>
 
     <TextView
         android:id="@+id/textViewHeaderUsername"
@@ -104,7 +106,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="@string/user_name"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderLastName" />
 
     <TextView
@@ -114,7 +116,7 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
         android:text="@string/pets_graduated"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderUsername" />
 
 
@@ -125,9 +127,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
         android:text="@string/reset_password"
-        app:layout_constraintTop_toBottomOf="@id/buttonSignOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"  />
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/buttonSignOut" />
 
     <TextView
         android:id="@+id/textHeaderChangeGoals"
@@ -145,8 +147,8 @@
         android:layout_height="44dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/water"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldOldPassword"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/textHeaderChangeGoals" />
@@ -157,8 +159,8 @@
         android:layout_height="49dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/meals"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldNewPassword"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeWater" />
@@ -169,8 +171,8 @@
         android:layout_height="45dp"
         android:layout_marginTop="15dp"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/sleep"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldReEnterNewPass"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeMeals" />
@@ -182,7 +184,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/ok"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeWater"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeWater" />
 
     <Button
@@ -192,7 +194,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/ok"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeMeals"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeMeals" />
 
     <Button
@@ -202,7 +204,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/ok"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeSleep"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeSleep" />
 
     <TextView
@@ -245,6 +247,26 @@
         app:layout_constraintStart_toEndOf="@+id/textViewHeaderPetsGraduated"
         app:layout_constraintTop_toBottomOf="@id/textViewFieldUsername" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
