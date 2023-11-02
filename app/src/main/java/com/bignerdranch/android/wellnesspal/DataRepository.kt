@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.Log
 import com.bignerdranch.android.wellnesspal.models.EatLog
 import com.bignerdranch.android.wellnesspal.models.Goal
+import com.bignerdranch.android.wellnesspal.models.Pet
 import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.bignerdranch.android.wellnesspal.models.User
 import com.bignerdranch.android.wellnesspal.models.WaterLog
@@ -43,6 +44,17 @@ class DataRepository private constructor(context: Context) {
 
     // QUERIES
 
+    // Write a new Pet at the given uid.
+    fun writePet(pet: Pet, uid: String) {
+        Log.d(TAG, "writing new pet at $uid")
+        val key = database.child("users/$uid/pets").push()
+        // set new Pet value at the given key
+        key.setValue(pet).addOnSuccessListener {
+            Log.d(TAG, "new Pet successfully written")
+        }.addOnFailureListener {
+            Log.d(TAG, "failure writing new pet at $uid", it)
+        }
+    }
 
     // Write a new User.
     fun writeUser(user: User, uid: String) {

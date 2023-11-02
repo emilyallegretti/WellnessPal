@@ -31,5 +31,13 @@
     <string name="meals">Meals</string>
     <string name="ok">OK</string>
     <string name="delete_account">Delete Account</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="create_pet_title">Create A New Pet</string>
+    <string-array name="colors_array">
+        <item>Blue</item>
+        <item>Purple</item>
+        <item>Red</item>
+    </string-array>
 
 </resources>
