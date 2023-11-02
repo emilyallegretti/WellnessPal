@@ -89,7 +89,7 @@ class PetInfoFragment : Fragment() {
             // set picture corresponding to chosen collar color, age, emotion
             val image = binding.petImage
             if (it.color.toString() == "Blue") {
-                image.setImageResource(R.drawable.)
+               // image.setImageResource(R.drawable.)
             }
         }
 
