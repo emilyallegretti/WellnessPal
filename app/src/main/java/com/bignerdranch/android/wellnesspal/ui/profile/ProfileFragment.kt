@@ -123,7 +123,7 @@ class ProfileFragment : Fragment() {
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
-            //TODO detatch event listner
+            userReference.removeEventListener(profileViewModel.userListener)
         }
 
         private fun deleteAccount() {

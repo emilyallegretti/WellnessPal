@@ -16,9 +16,8 @@ private const val TAG = "ProfileViewModel"
 class ProfileViewModel : ViewModel() {
     private val dataRepository = DataRepository.get()
     private var auth = FirebaseAuth.getInstance()
-
     val userData = MutableLiveData<User>()
-
+    lateinit var userListener : ValueEventListener
 
 
     /*
@@ -29,7 +28,7 @@ class ProfileViewModel : ViewModel() {
 // todo: move all queries to dataRepository
 
     fun addUserEventListener(userReference: DatabaseReference){
-        val userListener = object : ValueEventListener {
+        userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 val user = dataSnapshot.getValue<User>()
                 Log.d(TAG, user.toString())
