@@ -22,30 +22,24 @@
 
     <Button
         android:id="@+id/buttonSignOut"
-        android:layout_width="117dp"
-        android:layout_height="59dp"
-        android:textSize="17dp"
-        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/sign_out"
         app:layout_constraintBottom_toTopOf="@id/guideline6"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.883" />
+        app:layout_constraintEnd_toStartOf="@id/guideline"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+         />
 
     <Button
         android:id="@+id/buttonDeleteAccount"
-        android:layout_width="94dp"
-        android:layout_height="45dp"
-        android:gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="@string/delete_account"
-        android:textSize="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.936" />
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintBottom_toTopOf="@id/guideline22" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"
@@ -81,170 +75,212 @@
         android:id="@+id/textViewHeaderFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/first_name"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toTopOf="@+id/textViewHeaderLastName"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
+        app:layout_constraintTop_toBottomOf="@id/guideline21" />
 
     <TextView
         android:id="@+id/textViewHeaderLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/last_name"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textViewHeaderUsername"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderFirstName" />
 
     <TextView
         android:id="@+id/textViewHeaderUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
         android:text="@string/user_name"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/textViewHeaderPetsGraduated"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderLastName" />
+
 
     <TextView
         android:id="@+id/textViewHeaderPetsGraduated"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="30dp"
+        app:layout_constraintWidth_default="wrap"
+        android:textAlignment="center"
         android:text="@string/pets_graduated"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline5"
+        app:layout_constraintEnd_toStartOf="@id/guideline3"
+        app:layout_constraintStart_toEndOf="@id/guideline19"
         app:layout_constraintTop_toBottomOf="@+id/textViewHeaderUsername" />
-
 
     <Button
         android:id="@+id/buttonResetPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
         android:text="@string/reset_password"
-        app:layout_constraintTop_toBottomOf="@id/buttonSignOut"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"  />
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toEndOf="@id/guideline"
+        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintBottom_toTopOf="@id/guideline6"/>
 
     <TextView
         android:id="@+id/textHeaderChangeGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="45dp"
         android:text="@string/change_goals"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintTop_toBottomOf="@+id/guideline5" />
 
     <EditText
         android:id="@+id/editTextFieldChangeWater"
-        android:layout_width="133dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/water"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextFieldOldPassword"
+        android:inputType="number"
+        app:layout_constraintWidth_percent="0.2"
+        app:layout_constraintBottom_toTopOf="@+id/editTextFieldChangeMeals"
         app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/textHeaderChangeGoals" />
 
     <EditText
         android:id="@+id/editTextFieldChangeMeals"
-        android:layout_width="127dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/meals"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextFieldNewPassword"
+        android:inputType="number"
+        app:layout_constraintWidth_percent="0.2"
+        app:layout_constraintBottom_toTopOf="@+id/editTextFieldChangeSleep"
         app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeWater" />
 
     <EditText
         android:id="@+id/editTextFieldChangeSleep"
-        android:layout_width="134dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="15dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
         android:hint="@string/sleep"
-        app:layout_constraintBottom_toBottomOf="@+id/editTextFieldReEnterNewPass"
+        android:inputType="number"
+        app:layout_constraintWidth_percent="0.2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintEnd_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toBottomOf="@+id/editTextFieldChangeMeals" />
 
     <Button
         android:id="@+id/buttonChangeWater"
-        android:layout_width="57dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/ok"
+        app:layout_constraintWidth_percent="0.15"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeWater"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeWater" />
 
     <Button
         android:id="@+id/buttonChangeMeals"
-        android:layout_width="57dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/ok"
+        app:layout_constraintWidth_percent="0.15"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeMeals"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeMeals" />
 
     <Button
         android:id="@+id/buttonChangeSleep"
-        android:layout_width="57dp"
-        android:layout_height="43dp"
-        android:layout_marginEnd="16dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:text="@string/ok"
+        app:layout_constraintWidth_percent="0.15"
         app:layout_constraintBottom_toBottomOf="@+id/editTextFieldChangeSleep"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/guideline20"
+        app:layout_constraintStart_toStartOf="@+id/guideline4"
         app:layout_constraintTop_toTopOf="@+id/editTextFieldChangeSleep" />
 
     <TextView
         android:id="@+id/textViewFieldFirstName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="30dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeaderFirstName"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHeaderFirstName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@id/textViewHeaderFirstName"
+        app:layout_constraintHorizontal_bias="0"/>
 
     <TextView
         android:id="@+id/textViewFieldLastName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="30dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeaderLastName"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFieldFirstName" />
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHeaderLastName"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/textViewHeaderLastName"
+        app:layout_constraintHorizontal_bias="0"/>
 
     <TextView
         android:id="@+id/textViewFieldUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="58dp"
-        android:layout_marginTop="30dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeaderUsername"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFieldLastName" />
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewHeaderUsername"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@+id/textViewHeaderUsername"
+        app:layout_constraintHorizontal_bias="0"/>
 
     <TextView
         android:id="@+id/textViewFieldPetsGraduated"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="30dp"
         android:text="TextView"
-        app:layout_constraintStart_toEndOf="@+id/textViewHeaderPetsGraduated"
-        app:layout_constraintTop_toBottomOf="@id/textViewFieldUsername" />
+        android:textAlignment="textEnd"
+        app:layout_constraintBottom_toBottomOf="@id/textViewHeaderPetsGraduated"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toEndOf="@+id/guideline3"
+        app:layout_constraintTop_toTopOf="@id/textViewHeaderPetsGraduated"
+        app:layout_constraintHorizontal_bias="0"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline21"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline22"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
