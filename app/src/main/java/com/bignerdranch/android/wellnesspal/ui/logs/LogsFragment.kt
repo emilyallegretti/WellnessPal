@@ -83,6 +83,7 @@ class LogsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+        logsReference.removeEventListener(logsViewModel.LogListener)
     }
 
     override fun onDestroy() {
