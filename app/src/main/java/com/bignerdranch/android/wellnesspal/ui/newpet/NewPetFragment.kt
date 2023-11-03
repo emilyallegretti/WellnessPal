@@ -1,6 +1,7 @@
 package com.bignerdranch.android.wellnesspal.ui.newpet
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,13 +10,15 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentNewPetBinding
 import com.bignerdranch.android.wellnesspal.databinding.FragmentPetInfoBinding
 import com.bignerdranch.android.wellnesspal.ui.petinfo.PetInfoViewModel
+import kotlinx.coroutines.launch
 
-
+private const val TAG = "NewPetFragment"
 class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
     private var _binding: FragmentNewPetBinding? = null
     private lateinit var newPetViewModel: NewPetViewModel
@@ -52,14 +55,15 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // set event listener for submit button
         binding.submitNewPetButton.setOnClickListener{
-            newPetViewModel.writeNewPet(binding.petNameField.text.toString(), colorDropdown.selectedItem.toString())
+
+            newPetViewModel.writeNewPet(
+                binding.petNameField.text.toString(),
+                colorDropdown.selectedItem.toString()
+            )
             findNavController().popBackStack()
         }
         // whenever a new selection is made, update the cat preview picture to contain the selected color
         colorDropdown.onItemSelectedListener = this
-
-
-
     }
 // event handlers for when a new choice gets selected in the spinner.
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {

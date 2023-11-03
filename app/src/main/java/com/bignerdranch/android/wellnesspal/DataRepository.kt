@@ -5,20 +5,13 @@ import android.util.Log
 import com.bignerdranch.android.wellnesspal.models.EatLog
 import com.bignerdranch.android.wellnesspal.models.Goal
 import com.bignerdranch.android.wellnesspal.models.Pet
-import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.bignerdranch.android.wellnesspal.models.User
 import com.bignerdranch.android.wellnesspal.models.UserLog
-import com.bignerdranch.android.wellnesspal.models.WaterLog
 
-import com.google.firebase.auth.FirebaseAuth
-
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
-import com.google.firebase.database.ktx.getValue
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.tasks.await
 
 
 private const val TAG = "DataRepository"
@@ -27,7 +20,7 @@ class DataRepository private constructor(context: Context) {
 
     // Get a reference to the Firebase Realtime Database for this project.
     private val database = Firebase.database.reference
-    private val userAuth = FirebaseAuth.getInstance().currentUser
+
 
 
     // Storing the number of logs for the user.
@@ -45,16 +38,43 @@ class DataRepository private constructor(context: Context) {
 
     // QUERIES
 
+    // update pet's 'current' attribute to false.
+    fun updateCurrentFlag(uid: String, currPetKey: String) {
+        // get current pet under current user
+        database.child("users/$uid/pets/$currPetKey/current").setValue(false).addOnSuccessListener {
+            Log.d(TAG, "successfully set current to false")
+        }.addOnFailureListener {
+            Log.d(TAG, "failed to update current flag", it)
+        }
+    }
+    // increment Pet age.
+    fun incrementPetAge(uid: String, currPet: Pet , currPetKey: String) {
+        val currAge = currPet.age!!.toInt()
+        val newAge = currAge + 1
+        Log.d(TAG, "currAge: $currAge")
+
+        database.child("users/$uid/pets/$currPetKey/age").setValue(newAge).addOnSuccessListener {
+                Log.d(TAG, "pet age successfully incremented")
+            }.addOnFailureListener {
+                Log.d(TAG, "PET AGE INCREMENT FAILED")
+            }
+
+
+    }
+
     // Write a new Pet at the given uid.
-    fun writePet(pet: Pet, uid: String) {
+    fun writePet(pet: Pet, uid: String): Boolean {
+        var success=false
         Log.d(TAG, "writing new pet at $uid")
         val key = database.child("users/$uid/pets").push()
         // set new Pet value at the given key
         key.setValue(pet).addOnSuccessListener {
             Log.d(TAG, "new Pet successfully written")
+            success=true
         }.addOnFailureListener {
             Log.d(TAG, "failure writing new pet at $uid", it)
         }
+        return success
     }
 
     // Write a new User.
@@ -65,7 +85,7 @@ class DataRepository private constructor(context: Context) {
         getLogCount(database, uid)
     }
 
-    fun writeNewEatLog(log: UserLog, uid: String) {
+    fun writeNewEatLog(log: EatLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")

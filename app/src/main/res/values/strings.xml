@@ -34,6 +34,15 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="create_pet_title">Create A New Pet</string>
+    <string name="empty_field_err">ERROR: Field cannot be empty.</string>
+    <string name="non_positive_num_err">ERROR: please enter a positive number.</string>
+    <string name="waterGoalField">Water Goal:</string>
+    <string name="meals_left_to_reach_goal">Meals left to reach goal: %1$s</string>
+    <string name="goalsMetNote">Note: You have met your eating goal for the day! You can still submit meal logs, but they won\'t count towards your pet\'s growth.</string>
+    <string name="meal_goal">Meal Goal: %1$s</string>
+    <string name="oz_water_left_to_reach_goal">Oz. water left to reach goal: %1$s</string>
+    <string name="water_goal_note">Note: You have met your water goal for the day! You can still submit meal logs, but they won\'t count towards your pet\'s growth.</string>
+    <string name="waterGoal">Water Goal: %1$s</string>
     <string-array name="colors_array">
         <item>Blue</item>
         <item>Purple</item>

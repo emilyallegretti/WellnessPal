@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentProfileBinding
 import com.bignerdranch.android.wellnesspal.ui.authenticate.AuthActivity
 import com.google.firebase.auth.EmailAuthCredential
@@ -96,28 +97,40 @@ class ProfileFragment : Fragment() {
                             ).show()
                         }
                     }
-            }
-            buttonDeleteAccount.setOnClickListener {
-                // first reauthenticate user TODO: ask user to re-enter credentials
-                // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
-                // first delete user entry from database
-                deleteAccount()
-            }
+                buttonDeleteAccount.setOnClickListener {
+                    // first reauthenticate user TODO: ask user to re-enter credentials
+                    // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
+                    // first delete user entry from database
+                    deleteAccount()
+                }
                 // Update goals based on user input.
-            buttonChangeMeals.setOnClickListener {
-                Log.d(TAG, editTextFieldChangeMeals.text.toString())
-                profileViewModel.updateGoal(editTextFieldChangeMeals.text.toString(), "eat")
-                editTextFieldChangeMeals.setText("")
-            }
-            buttonChangeWater.setOnClickListener {
-                profileViewModel.updateGoal(editTextFieldChangeWater.text.toString(), "water")
-                editTextFieldChangeWater.setText("")
-            }
-            buttonChangeSleep.setOnClickListener {
-                profileViewModel.updateGoal(editTextFieldChangeSleep.text.toString(), "sleep")
-                editTextFieldChangeSleep.setText("")
-            }
+                buttonChangeMeals.setOnClickListener {
+                    val text = editTextFieldChangeMeals.text.toString()
+                    if (text=="") {
+                        Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
+                    } else {
+                        profileViewModel.updateGoal(text, "eat")
+                    }
 
+                    editTextFieldChangeMeals.setText("")
+                }
+                buttonChangeWater.setOnClickListener {
+                    val text = editTextFieldChangeWater.text.toString()
+                    if (text=="") {
+                        Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
+                    } else {
+                        profileViewModel.updateGoal(text, "water")
+                    }
+                }
+                buttonChangeSleep.setOnClickListener {
+                    val text = editTextFieldChangeSleep.text.toString()
+                    if (text=="") {
+                        Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
+                    } else {
+                        profileViewModel.updateGoal(text, "sleep")
+                    }
+                }
+            }
         }
     }
         override fun onDestroyView() {
