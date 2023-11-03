@@ -13,44 +13,78 @@
 
     <EditText
         android:id="@+id/fieldEmail"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.4"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:ellipsize="end"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toStartOf="@+id/fieldPassword"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline27"
+        app:layout_constraintStart_toEndOf="@id/guideline23"
+        app:layout_constraintTop_toTopOf="@id/guideline25"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"/>
 
     <EditText
         android:id="@+id/fieldPassword"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.4"
         android:layout_height="wrap_content"
         android:ellipsize="end"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:maxLines="1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/fieldEmail"
-        app:layout_constraintTop_toTopOf="@+id/fieldEmail" />
+        app:layout_constraintEnd_toStartOf="@id/guideline24"
+        app:layout_constraintStart_toEndOf="@+id/guideline27"
+        app:layout_constraintTop_toBottomOf="@+id/guideline25"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"/>
 
     <Button
         android:id="@+id/buttonSignIn"
-        android:layout_width="150dp"
+        android:layout_width="0dp"
+        app:layout_constraintWidth_percent="0.35"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
         android:text="@string/sign_in"
-        app:layout_constraintHorizontal_chainStyle="packed"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fieldEmail" />
+        app:layout_constraintEnd_toStartOf="@+id/guideline24"
+        app:layout_constraintStart_toEndOf="@id/guideline23"
+        app:layout_constraintTop_toBottomOf="@+id/fieldEmail"
+        app:layout_constraintBottom_toTopOf="@+id/guideline26"
+        app:layout_constraintVertical_bias="0.155"/>
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline23"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline24"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
