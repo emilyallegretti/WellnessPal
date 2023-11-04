@@ -16,8 +16,10 @@ private const val TAG = "ProfileViewModel"
 class ProfileViewModel : ViewModel() {
     private val dataRepository = DataRepository.get()
     private var auth = FirebaseAuth.getInstance()
+    lateinit var userListener: ValueEventListener
+
     val userData = MutableLiveData<User>()
-    lateinit var userListener : ValueEventListener
+
 
 
     /*
@@ -31,7 +33,7 @@ class ProfileViewModel : ViewModel() {
         userListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot){
                 val user = dataSnapshot.getValue<User>()
-                Log.d(TAG, user.toString())
+                //Log.d(TAG, user.toString())
 
                 //update the liveData with the new value from the listener
                 user?.let {

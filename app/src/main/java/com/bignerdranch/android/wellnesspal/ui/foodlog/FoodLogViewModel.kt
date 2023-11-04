@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.DataRepository
 import com.bignerdranch.android.wellnesspal.models.EatLog
+import com.bignerdranch.android.wellnesspal.models.UserLog
 import com.google.firebase.auth.FirebaseAuth
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -27,7 +28,7 @@ class FoodLogViewModel : ViewModel(){
 
     fun writeNewFoodLog(meals:String) {
         val date = getDate()
-        val foodLog = EatLog("eat", date, meals )
+        val foodLog = UserLog("eat", date, meals )
 
         dataRepository.writeNewEatLog(foodLog, auth!!.currentUser!!.uid )
     }
