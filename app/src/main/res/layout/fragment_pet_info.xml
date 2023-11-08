@@ -4,61 +4,95 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.petinfo.PetInfoFragment"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingBottom="@dimen/activity_vertical_margin">>
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    tools:context=".ui.petinfo.PetInfoFragment">
 
-    <TextView
-        android:id="@+id/text_pet_info"
-        android:layout_width="match_parent"
+    <ImageView
+        android:id="@+id/petImage"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Pet Info"/>
-
+        android:src="@drawable/small_blue_happy"
+        app:layout_constraintTop_toBottomOf="@id/guideline29"
+        app:layout_constraintEnd_toStartOf="@id/guideline38"
+        app:layout_constraintStart_toEndOf="@id/guideline37"
+        app:layout_constraintBottom_toTopOf="@id/guideline39" />
 
     <ImageButton
         android:id="@+id/foodLogButton"
         android:layout_width="57dp"
         android:layout_height="57dp"
-        android:layout_marginBottom="180dp"
         android:src="@drawable/food_log_icon_v2"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.067"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintBottom_toTopOf="@id/sleepLogButton"
+        app:layout_constraintEnd_toStartOf="@id/guideline38"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@id/guideline37"
+        app:layout_constraintTop_toBottomOf="@+id/waterLogButton" />
 
     <ImageButton
         android:id="@+id/waterLogButton"
-        android:layout_width="59dp"
-        android:layout_height="58dp"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
         android:src="@drawable/water_log_icon"
         app:layout_constraintBottom_toTopOf="@+id/foodLogButton"
         app:layout_constraintEnd_toEndOf="@+id/foodLogButton"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/foodLogButton"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.964" />
+        app:layout_constraintTop_toBottomOf="@id/guideline35" />
 
     <ImageButton
         android:id="@+id/sleepLogButton"
-        android:layout_width="59dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="29dp"
+        android:layout_width="57dp"
+        android:layout_height="57dp"
         android:src="@drawable/sleep_log_icon"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/guideline36"
+        app:layout_constraintEnd_toEndOf="@id/foodLogButton"
+        app:layout_constraintStart_toStartOf="@id/foodLogButton"
         app:layout_constraintTop_toBottomOf="@+id/foodLogButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline37"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline38"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline36"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline39"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.99" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

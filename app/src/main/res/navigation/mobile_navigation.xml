@@ -19,6 +19,9 @@
     <action
         android:id="@+id/to_food_log"
         app:destination="@id/navigation_food_log" />
+        <action
+            android:id="@+id/to_new_pet"
+            app:destination="@id/navigation_new_pet" />
     </fragment>
 
 
@@ -28,6 +31,13 @@
         android:name="com.bignerdranch.android.wellnesspal.ui.waterlog.WaterLogFragment"
         android:label="WaterLog"
         tools:layout="@layout/fragment_water_log" />
+
+    <fragment
+        android:id="@+id/navigation_new_pet"
+        android:name="com.bignerdranch.android.wellnesspal.ui.newpet.NewPetFragment"
+        android:label="Create New Pet"
+        tools:layout="@layout/fragment_new_pet" >
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_food_log"

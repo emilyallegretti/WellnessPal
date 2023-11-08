@@ -4,8 +4,10 @@ import android.content.Context
 import android.util.Log
 import com.bignerdranch.android.wellnesspal.models.EatLog
 import com.bignerdranch.android.wellnesspal.models.Goal
+import com.bignerdranch.android.wellnesspal.models.Pet
 import com.bignerdranch.android.wellnesspal.models.SleepLog
 import com.bignerdranch.android.wellnesspal.models.User
+import com.bignerdranch.android.wellnesspal.models.UserLog
 import com.bignerdranch.android.wellnesspal.models.WaterLog
 
 import com.google.firebase.auth.FirebaseAuth
@@ -43,6 +45,17 @@ class DataRepository private constructor(context: Context) {
 
     // QUERIES
 
+    // Write a new Pet at the given uid.
+    fun writePet(pet: Pet, uid: String) {
+        Log.d(TAG, "writing new pet at $uid")
+        val key = database.child("users/$uid/pets").push()
+        // set new Pet value at the given key
+        key.setValue(pet).addOnSuccessListener {
+            Log.d(TAG, "new Pet successfully written")
+        }.addOnFailureListener {
+            Log.d(TAG, "failure writing new pet at $uid", it)
+        }
+    }
 
     // Write a new User.
     fun writeUser(user: User, uid: String) {
@@ -52,7 +65,7 @@ class DataRepository private constructor(context: Context) {
         getLogCount(database, uid)
     }
 
-    fun writeNewEatLog(log: EatLog, uid: String) {
+    fun writeNewEatLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
@@ -69,7 +82,7 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
-    fun writeNewWaterLog(log: WaterLog, uid: String) {
+    fun writeNewWaterLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
@@ -86,7 +99,7 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
-    fun writeNewSleepLog(log: SleepLog, uid: String) {
+    fun writeNewSleepLog(log: UserLog, uid: String) {
         //outputs appear in logcat to show log info
         Log.d(TAG, "writing new log at $uid and log count $logCount")
         Log.d(TAG, "log is $log")
@@ -124,7 +137,11 @@ class DataRepository private constructor(context: Context) {
     fun updateGoal(newVal:String, goalType: String, uid: String) {
         Log.d(TAG, "updating $goalType goal")
         val targetChild = goalType + "Goal"     // create child node name to be updated
-        database.child("users/$uid/goal/$targetChild").setValue(newVal)
+        database.child("users/$uid/goal/$targetChild").setValue(newVal).addOnSuccessListener {
+            Log.d(TAG, "successfully updated goal")
+        }.addOnFailureListener{
+            Log.d(TAG, "Failed to update goal")
+        }
     }
 
 //    fun updatePassword(uid: String, newPassword: String){

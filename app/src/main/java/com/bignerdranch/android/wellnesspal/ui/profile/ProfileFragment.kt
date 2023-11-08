@@ -96,32 +96,34 @@ class ProfileFragment : Fragment() {
                             ).show()
                         }
                     }
-                buttonDeleteAccount.setOnClickListener {
-                    // first reauthenticate user TODO: ask user to re-enter credentials
-                    // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
-                    // first delete user entry from database
-                    deleteAccount()
-                }
-                // Update goals based on user input.
-                buttonChangeMeals.setOnClickListener {
-                    profileViewModel.updateGoal(editTextFieldChangeMeals.text.toString(), "eat")
-                    editTextFieldChangeMeals.setText("")
-                }
-                buttonChangeWater.setOnClickListener {
-                    profileViewModel.updateGoal(editTextFieldChangeWater.text.toString(), "water")
-                    editTextFieldChangeWater.setText("")
-                }
-                buttonChangeSleep.setOnClickListener {
-                    profileViewModel.updateGoal(editTextFieldChangeSleep.text.toString(), "sleep")
-                    editTextFieldChangeSleep.setText("")
-                }
             }
+            buttonDeleteAccount.setOnClickListener {
+                // first reauthenticate user TODO: ask user to re-enter credentials
+                // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
+                // first delete user entry from database
+                deleteAccount()
+            }
+                // Update goals based on user input.
+            buttonChangeMeals.setOnClickListener {
+                Log.d(TAG, editTextFieldChangeMeals.text.toString())
+                profileViewModel.updateGoal(editTextFieldChangeMeals.text.toString(), "eat")
+                editTextFieldChangeMeals.setText("")
+            }
+            buttonChangeWater.setOnClickListener {
+                profileViewModel.updateGoal(editTextFieldChangeWater.text.toString(), "water")
+                editTextFieldChangeWater.setText("")
+            }
+            buttonChangeSleep.setOnClickListener {
+                profileViewModel.updateGoal(editTextFieldChangeSleep.text.toString(), "sleep")
+                editTextFieldChangeSleep.setText("")
+            }
+
         }
     }
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
-            //TODO detatch event listner
+            userReference.removeEventListener(profileViewModel.userListener)
         }
 
         private fun deleteAccount() {
