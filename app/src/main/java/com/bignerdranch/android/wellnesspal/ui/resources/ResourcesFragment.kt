@@ -7,14 +7,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import com.bignerdranch.android.wellnesspal.databinding.FragmentResourcesBinding
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bignerdranch.android.wellnesspal.api.NYTapi
 import com.bignerdranch.android.wellnesspal.models.Article
-import com.bignerdranch.android.wellnesspal.models.ArticleResponse
+import com.bignerdranch.android.wellnesspal.models.ResponseData
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -25,7 +23,6 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 const val BASE_URL = "https://api.nytimes.com/svc/topstories/v2/"
 
-
 private const val TAG = "ResourcesFragment"
 
 class ResourcesFragment : Fragment() {
@@ -33,7 +30,7 @@ class ResourcesFragment : Fragment() {
     private lateinit var _binding: FragmentResourcesBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var nyt: NYTapi
-    private val articles: MutableList<Article> = ArrayList()
+    private var articles: MutableList<Article> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -58,7 +55,6 @@ class ResourcesFragment : Fragment() {
             .build()
 
         nyt = retrofit.create(NYTapi::class.java)
-        Log.d(TAG, "$nyt")
 
         // Fetch articles when the fragment is created
         fetchArticles()
@@ -69,23 +65,27 @@ class ResourcesFragment : Fragment() {
     private fun fetchArticles() {
         val call = nyt.getArticles()
 
-        call.enqueue(object : Callback<ArticleResponse> {
-            override fun onResponse(call: Call<ArticleResponse>, response: Response<ArticleResponse>) {
+        call.enqueue(object : Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
                 Log.d(TAG, "$response")
                 if (response.isSuccessful) {
+                    Log.d(TAG, "API call was successful")
+
                     val articleResponse = response.body()
                     articleResponse?.let {
                         articles.clear()
-                        articles.addAll(it.response.articles)
+                        articles = it.results.toMutableList()
+
                         recyclerView.adapter?.notifyDataSetChanged()
+                        Log.d(TAG, "Articles retrieved: $articles")
                     }
                 } else {
                     Log.d(TAG, "Failed to fetch articles")
                 }
             }
 
-            override fun onFailure(call: Call<ArticleResponse>, t: Throwable) {
-                Log.d(TAG, "Network error")
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.d(TAG, "Network error: "+ t.message)
             }
         })
     }

@@ -6,8 +6,7 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 @Keep
-data class ResponseData(
-    @Json(name = "Article") val articles: List<Article>)
-{
-
+class ResponseData(){
+    @Json(name = "results") lateinit var results: List<Article>
 }
+
