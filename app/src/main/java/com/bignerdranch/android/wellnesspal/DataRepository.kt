@@ -38,6 +38,14 @@ class DataRepository private constructor(context: Context) {
     }
 
     // QUERIES
+    // update the pet's emotion to given string.
+    fun setMood(uid: String, mood: String, currPetKey: String) {
+        database.child("users/$uid/pets/$currPetKey/emotion").setValue(mood).addOnSuccessListener {
+            Log.d(TAG, "successfully set mood to $mood")
+        }.addOnFailureListener {
+            Log.d(TAG, "failed to update mood", it)
+        }
+    }
 
     // update pet's 'current' attribute to false.
     fun updateCurrentFlag(uid: String, currPetKey: String) {

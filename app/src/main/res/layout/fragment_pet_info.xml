@@ -15,10 +15,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/small_blue_happy"
-        app:layout_constraintTop_toBottomOf="@id/guideline29"
+        app:layout_constraintBottom_toTopOf="@id/guideline39"
         app:layout_constraintEnd_toStartOf="@id/guideline38"
         app:layout_constraintStart_toEndOf="@id/guideline37"
-        app:layout_constraintBottom_toTopOf="@id/guideline39" />
+        app:layout_constraintTop_toBottomOf="@id/guideline29"
+        app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
         android:id="@+id/foodLogButton"
@@ -95,21 +96,15 @@
         app:layout_constraintGuide_percent="0.99" />
 
 
-        android:src="@drawable/small_blue_happy"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/petName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.069"
+        app:layout_constraintBottom_toTopOf="@+id/guideline35"
+        app:layout_constraintEnd_toStartOf="@+id/guideline38"
+        app:layout_constraintStart_toStartOf="@+id/guideline37"
+        app:layout_constraintTop_toTopOf="@+id/guideline29"
+        app:layout_constraintVertical_bias="0.295"
         tools:text="Pet Name" />
 </androidx.constraintlayout.widget.ConstraintLayout>
