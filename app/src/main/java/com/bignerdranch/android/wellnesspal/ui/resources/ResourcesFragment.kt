@@ -9,7 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bignerdranch.android.wellnesspal.databinding.FragmentResourcesBinding
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.bignerdranch.android.wellnesspal.ArticleAdapter
 import com.bignerdranch.android.wellnesspal.api.NYTapi
 import com.bignerdranch.android.wellnesspal.models.Article
 import com.bignerdranch.android.wellnesspal.models.ResponseData
@@ -27,26 +27,32 @@ private const val TAG = "ResourcesFragment"
 
 class ResourcesFragment : Fragment() {
 
-    private lateinit var _binding: FragmentResourcesBinding
-    private lateinit var recyclerView: RecyclerView
+    private var _binding: FragmentResourcesBinding? = null
+    private lateinit var adapter: ArticleAdapter
+
+
+    private val binding get() = _binding!!
+    private lateinit var resourcesViewModel: ResourcesViewModel
+
+
     private lateinit var nyt: NYTapi
     private var articles: MutableList<Article> = ArrayList()
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
+        inflater: LayoutInflater,
+        container: ViewGroup?,
         savedInstanceState: Bundle?
 
     ): View {
+
+        resourcesViewModel = ViewModelProvider(this).get(ResourcesViewModel::class.java)
+
         _binding = FragmentResourcesBinding.inflate(inflater, container, false)
-        val view = _binding.root
+        binding.articlesRecyclerView.layoutManager = LinearLayoutManager(context)
 
-        recyclerView = _binding.articlesRecyclerView
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val adapter = ArticleAdapter(articles)
-        recyclerView.adapter = adapter
 
-        val refreshButton = _binding.articlesRefreshButton
-        refreshButton.setOnClickListener { refreshArticles() }
+        val root: View = binding.root
+
 
         val moshi = Moshi.Builder().addLast(KotlinJsonAdapterFactory()).build()
         val retrofit = Retrofit.Builder()
@@ -57,12 +63,51 @@ class ResourcesFragment : Fragment() {
         nyt = retrofit.create(NYTapi::class.java)
 
         // Fetch articles when the fragment is created
-        fetchArticles()
 
-        return view
+        this.adapter = ArticleAdapter()
+        Log.d(TAG, "Resources: Setting adapter")
+        binding.articlesRecyclerView.adapter = adapter
+
+        return root
     }
 
-    private fun fetchArticles() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val call = nyt.getArticles()
+
+        call.enqueue(object : Callback<ResponseData> {
+            override fun onResponse(call: Call<ResponseData>, response: Response<ResponseData>) {
+                Log.d(TAG, "$response")
+                if (response.isSuccessful) {
+                    Log.d(TAG, "API call was successful")
+
+                    val articleResponse = response.body()
+                    articleResponse?.let {
+                        articles.clear()
+                        articles = it.results.toMutableList()
+                        adapter.setArticles(articles)
+                        binding.articlesRecyclerView.adapter?.notifyDataSetChanged()
+                        //Log.d(TAG, "Articles retrieved: $articles")
+                        Log.d(TAG, "Article one: ${articles[1]}" )
+                    }
+
+                } else {
+                    Log.d(TAG, "Failed to fetch articles")
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseData>, t: Throwable) {
+                Log.d(TAG, "Network error: "+ t.message)
+            }
+        })
+
+
+
+
+        }
+
+    /*private fun fetchArticles() {
         val call = nyt.getArticles()
 
         call.enqueue(object : Callback<ResponseData> {
@@ -76,7 +121,7 @@ class ResourcesFragment : Fragment() {
                         articles.clear()
                         articles = it.results.toMutableList()
 
-                        recyclerView.adapter?.notifyDataSetChanged()
+                        binding.articlesRecyclerView.adapter?.notifyDataSetChanged()
                         Log.d(TAG, "Articles retrieved: $articles")
                     }
                 } else {
@@ -88,13 +133,18 @@ class ResourcesFragment : Fragment() {
                 Log.d(TAG, "Network error: "+ t.message)
             }
         })
-    }
-    private fun refreshArticles() {
-        fetchArticles()
-    }
+    }*/
+
+
     override fun onDestroyView() {
         super.onDestroyView()
-        // NEED TO NULL THE BINDING NOT WORKING _binding = null
+        _binding = null
+        Log.d(TAG, "Resources: OnDestroyView() called")
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "Resources: OnDestroy() called")
     }
 
 }
