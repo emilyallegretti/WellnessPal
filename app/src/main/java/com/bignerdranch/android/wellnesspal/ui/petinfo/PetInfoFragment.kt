@@ -32,12 +32,12 @@ class PetInfoFragment : Fragment() {
     private var _binding: FragmentPetInfoBinding? = null
     private lateinit var petInfoViewModel: PetInfoViewModel
     private lateinit var petRef : Query
-    private lateinit var logsRef:DatabaseReference
+    private lateinit var logsRef: Query
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     private var database = Firebase.database.reference
     private lateinit var petListener: ValueEventListener
     private var userReference = database.child("users").child(auth.currentUser!!.uid)
-    private lateinit var currPetKey: String
+    private var currPetKey: String =""
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -52,7 +52,7 @@ class PetInfoFragment : Fragment() {
             ViewModelProvider(this)[PetInfoViewModel::class.java]
         _binding = FragmentPetInfoBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+        petInfoViewModel.mostRecentLogDate.value = petInfoViewModel.getCurrentDate()
         Log.d(TAG, "OnCreateView() called")
         return root
     }
@@ -98,19 +98,24 @@ class PetInfoFragment : Fragment() {
         }
         petRef.addValueEventListener(petListener)
         // set pet mood based on amount of days since most recent log
-        logsRef = userReference.child("logs")
+        logsRef = userReference.child("logs").limitToLast(1)
         petInfoViewModel.addMostRecentLogEventListener(logsRef)
-        val diff = getDateDiff()
-        // todo: change once debugging finishes
-        if (diff < 0) {
-            petInfoViewModel.setMood("happy", currPetKey)
-        } else if (diff < 1)  {
-            petInfoViewModel.setMood("irritated", currPetKey)
-            Toast.makeText(context, "Your pet is irritated because you haven't submitted a log in 3 days! Make them happy again by submitting a log.", Toast.LENGTH_LONG)
-        } else {
-            petInfoViewModel.setMood("sad", currPetKey)
-            Toast.makeText(context, "Your pet is irritated because you haven't submitted a log in 7 days! Make them happy again by submitting a log.", Toast.LENGTH_LONG)
+        petInfoViewModel.mostRecentLogDate.observe(viewLifecycleOwner) {
+
+            val diff = petInfoViewModel.getDateDiff()
+            Log.d(TAG, "observer fired for most recent log, $diff")
+            // todo: change once debugging finishes
+            if (diff.toInt() < 0) {
+                petInfoViewModel.setMood("happy", currPetKey)
+            } else if (diff.toInt() < 0)  {
+                petInfoViewModel.setMood("irritated", currPetKey)
+                Toast.makeText(context, "Your pet is irritated because you haven't submitted a log in 3 days! Make them happy again by submitting a log.", Toast.LENGTH_LONG).show()
+            } else {
+                petInfoViewModel.setMood("sad", currPetKey)
+                Toast.makeText(context, "Your pet is sad because you haven't submitted a log in 7 days! Make them happy again by submitting a log.", Toast.LENGTH_LONG).show()
+            }
         }
+
 
 
         // set up observer for current pet
@@ -255,14 +260,9 @@ class PetInfoFragment : Fragment() {
         Log.d(TAG, "OnStop() called")
         petRef.removeEventListener(petListener)
         logsRef.removeEventListener(petInfoViewModel.logsListener)
+
     }
-    // get the difference in days between two Dates.
-    fun getDateDiff(): Long {
-        val currDate = petInfoViewModel.getCurrentDate()
-        val lastLogDate = petInfoViewModel.mostRecentLogDate
-        val diff = currDate?.time!! - lastLogDate.time
-        return (((diff/1000)/60)/60)/24
-    }
+
     // dynamically set the pet image displayed based on the attributes received from the database.
     fun setImage(color: String, size:String, mood:String) {
         val image = binding.petImage
