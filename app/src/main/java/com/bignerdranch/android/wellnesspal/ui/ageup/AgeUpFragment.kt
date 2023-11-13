@@ -21,7 +21,7 @@ import kotlin.math.sqrt
 
 
 private var TAG = "AgeUpFragment"
-private const val SHAKE_THRESHOLD = 2.0
+private const val SHAKE_THRESHOLD = 20.0
 class AgeUpFragment : Fragment(), SensorEventListener {
 
     private var _binding: FragmentAgeUpBinding? = null
@@ -63,6 +63,7 @@ class AgeUpFragment : Fragment(), SensorEventListener {
 
     override fun onSensorChanged(event: SensorEvent) {
         if (event.sensor.type == Sensor.TYPE_ACCELEROMETER) {
+            Log.d(TAG, "Shake detected")
             handleShake(event.values[0], event.values[1], event.values[2])
         }
     }
