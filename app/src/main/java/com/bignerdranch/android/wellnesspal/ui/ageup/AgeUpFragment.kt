@@ -21,7 +21,7 @@ import kotlin.math.sqrt
 
 
 private var TAG = "AgeUpFragment"
-private const val SHAKE_THRESHOLD = 20.0
+private const val SHAKE_THRESHOLD = 15.0
 class AgeUpFragment : Fragment(), SensorEventListener {
 
     private var _binding: FragmentAgeUpBinding? = null
