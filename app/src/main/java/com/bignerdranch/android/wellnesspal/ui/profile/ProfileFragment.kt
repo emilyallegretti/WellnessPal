@@ -103,6 +103,7 @@ class ProfileFragment : Fragment() {
                             ).show()
                         }
                     }
+            }
                 buttonDeleteAccount.setOnClickListener {
                     // first reauthenticate user TODO: ask user to re-enter credentials
                     // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
@@ -138,7 +139,7 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-    }
+
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
