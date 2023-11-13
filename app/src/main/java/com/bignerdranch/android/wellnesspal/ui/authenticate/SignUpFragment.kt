@@ -71,6 +71,25 @@ class SignUpFragment: Fragment() {
         } else {
             binding.fieldPassword.error = null
         }
+    if (TextUtils.isEmpty(binding.fieldSleepGoal.text.toString())) {
+        binding.fieldSleepGoal.error = "Required"
+        result = false
+    } else {
+        binding.fieldSleepGoal.error = null
+    }
+    if (TextUtils.isEmpty(binding.fieldFoodGoal.text.toString())) {
+        binding.fieldFoodGoal.error = "Required"
+        result = false
+    } else {
+        binding.fieldFoodGoal.error = null
+    }
+    if (TextUtils.isEmpty(binding.fieldWaterGoal.text.toString())) {
+        binding.fieldWaterGoal.error = "Required"
+        result = false
+    } else {
+        binding.fieldWaterGoal.error = null
+    }
+
         return result
     }
 

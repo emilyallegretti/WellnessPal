@@ -30,6 +30,8 @@ class ProfileFragment : Fragment() {
     private var database = Firebase.database.reference
     private var userReference = database.child("users").child(auth.currentUser!!.uid)
     private var _binding: FragmentProfileBinding? = null
+    var gradPetsQuery = database.child("users").child(auth.currentUser!!.uid).child("pets").orderByChild("age").equalTo(9.0)
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -56,7 +58,9 @@ class ProfileFragment : Fragment() {
             textViewFieldFirstName.text = it.fname
             textViewFieldLastName.text = it.lname
             textViewFieldUsername.text = it.email
-            textViewFieldPetsGraduated.text = "Adding Later"
+        }
+        profileViewModel.gradPetsCountData.observe(viewLifecycleOwner) {
+            textViewFieldPetsGraduated.text= it.toString()
         }
         return root
     }
@@ -69,6 +73,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         profileViewModel.addUserEventListener(userReference)
+        gradPetsQuery = database.child("users").child(auth.currentUser!!.uid).child("pets").orderByChild("age").equalTo(9.0)
+        profileViewModel.addGradPetCountEventListener(gradPetsQuery)
 
         binding.apply {
             // when user signs out, return to the initial AuthActivity screen
@@ -97,6 +103,7 @@ class ProfileFragment : Fragment() {
                             ).show()
                         }
                     }
+            }
                 buttonDeleteAccount.setOnClickListener {
                     // first reauthenticate user TODO: ask user to re-enter credentials
                     // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
@@ -132,7 +139,7 @@ class ProfileFragment : Fragment() {
                 }
             }
         }
-    }
+
         override fun onDestroyView() {
             super.onDestroyView()
             _binding = null
@@ -150,6 +157,11 @@ class ProfileFragment : Fragment() {
                 Log.d(TAG, "failure deleting user from Firebase Auth", it)
             }
         }
+
+    override fun onStop() {
+        super.onStop()
+        gradPetsQuery.removeEventListener(profileViewModel.gradPetCountListener)
+    }
 }
 
 

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -16,12 +16,12 @@
         android:text="Enter the number of hours slept"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintBottom_toTopOf="@+id/guideline14"
         app:layout_constraintEnd_toStartOf="@id/guideline12"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/guideline11"
-        app:layout_constraintTop_toBottomOf="@id/guideline13"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline13"
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/fieldSleepLog"
@@ -32,13 +32,13 @@
         android:inputType="number"
         android:maxLines="1"
         android:textAlignment="center"
-        app:layout_constraintWidth_percent="0.45"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="@id/guideline14"
-        app:layout_constraintStart_toEndOf="@id/guideline11"
         app:layout_constraintEnd_toStartOf="@id/guideline12"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/text_sleep_log"
-        app:layout_constraintVertical_bias="0.155" />
+        app:layout_constraintVertical_bias="0.155"
+        app:layout_constraintWidth_percent="0.45" />
 
     <Button
         android:id="@+id/buttonSubmitSleepLog"
@@ -49,8 +49,7 @@
         app:layout_constraintEnd_toStartOf="@id/guideline12"
         app:layout_constraintStart_toEndOf="@id/guideline11"
         app:layout_constraintTop_toBottomOf="@+id/fieldSleepLog"
-        app:layout_constraintVertical_bias="0.155"
-        />
+        app:layout_constraintVertical_bias="0.155" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline11"
@@ -79,40 +78,49 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.35" />
+
     <TextView
         android:id="@+id/waterGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
         android:text="Sleep Goal: "
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintBottom_toTopOf="@+id/sleepLeftToGoalText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline13"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/sleepLeftToGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="248dp"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/guideline15"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline13"
+        app:layout_constraintVertical_bias="0.553"
         tools:text="Hours Sleep Left to Meet Goal:" />
 
     <TextView
         android:id="@+id/goalsMetNote"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.122"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/waterGoalText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.056"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
         tools:text="" />
 </androidx.constraintlayout.widget.ConstraintLayout>
