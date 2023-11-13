@@ -45,23 +45,18 @@ class WaterLogFragment : Fragment() {
         _binding = FragmentWaterLogBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textWaterLog
-        waterLogViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
-
         waterLogViewModel.totalLogsCurrDateData.observe(viewLifecycleOwner) {
             Log.d(TAG, "total logs observer fired")
             val waterGoal = waterLogViewModel.goalData.value?.toInt()
             if (waterGoal != null) {
                 // display meals left to goal
-                var mealsLeft = (waterGoal - it)
-                if (mealsLeft < 0) {
-                    mealsLeft = 0
+                var waterLeft = (waterGoal - it)
+                if (waterLeft < 0) {
+                    waterLeft = 0
                 }
                 binding.waterLeftToGoalText.text  =
-                    getString(R.string.oz_water_left_to_reach_goal, mealsLeft)
-                if (mealsLeft == 0) {
+                    getString(R.string.oz_water_left_to_reach_goal, waterLeft.toString())
+                if (waterLeft == 0) {
                     // TODO: UNCOMMENT WHEN DEBUGGING DONE
                     //waterLogViewModel.goalMet = true
                     binding.goalsMetNote.text = getString(R.string.water_goal_note)

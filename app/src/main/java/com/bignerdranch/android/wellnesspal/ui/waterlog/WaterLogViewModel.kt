@@ -35,10 +35,7 @@ class WaterLogViewModel : ViewModel(){
     var goalMet : Boolean = false
 
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "Enter the number of meals eaten"
-    }
-    val text: LiveData<String> = _text
+
 
     private fun getDateAndTime(): String {
         val simpleDate = SimpleDateFormat("dd/MM/yyyy hh:mm:ss")
