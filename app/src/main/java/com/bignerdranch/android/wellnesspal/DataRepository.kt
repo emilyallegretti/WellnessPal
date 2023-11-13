@@ -173,6 +173,17 @@ class DataRepository private constructor(context: Context) {
         }
     }
 
+    fun updateBirthday(uid: String, currPetKey :String, birthdayNum :String ) {
+        Log.d(TAG, "updating birthday$birthdayNum")
+        database.child("users/$uid/pets/$currPetKey/birthday$birthdayNum").setValue(true).addOnSuccessListener {
+            Log.d(TAG, "successfully updated birthday$birthdayNum")
+        }.addOnFailureListener{
+            Log.d(TAG, "Failed to update birthday$birthdayNum")
+        }
+    }
+
+
+
 //    fun updatePassword(uid: String, newPassword: String){
 //        userAuth!!.updatePassword(newPassword)
 //        //TODO add on completion listeners

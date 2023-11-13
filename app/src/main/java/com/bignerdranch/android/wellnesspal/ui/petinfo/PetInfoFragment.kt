@@ -15,6 +15,7 @@ import com.bignerdranch.android.wellnesspal.MainActivity
 import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentPetInfoBinding
 import com.bignerdranch.android.wellnesspal.models.Pet
+import com.google.android.gms.tasks.Task
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -24,6 +25,7 @@ import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.database.ktx.getValue
+import com.google.firebase.database.ktx.values
 import com.google.firebase.ktx.Firebase
 
 private const val TAG = "PetInfoFragment"
@@ -160,44 +162,60 @@ class PetInfoFragment : Fragment() {
            */
                 if (it.age == 3) {
                     // require shake and then display medium sized happy version of pet, given color
-                    Toast.makeText(context, "Your pet has reached middle age!", Toast.LENGTH_LONG)
-                        .show()
+                    Log.d(TAG, "birthdayOne is ${petInfoViewModel.petData.value?.birthdayThree}")
 
-                    // go to the AgeUpFragment
-                    findNavController().navigate(R.id.to_age_up)
-                    mood = "happy"
+                    if (petInfoViewModel.petData.value?.birthdayOne == false){
+
+                        Toast.makeText(context, "Your pet has reached middle age!", Toast.LENGTH_LONG)
+                            .show()
+
+                        petInfoViewModel.updateBirthday("One", currPetKey)
+
+                        Log.d(TAG, "navigated to AgeUp")
+                        findNavController().navigate(R.id.to_age_up)
+                        mood = "happy"
+                    }
+
 
                 } else if (it.age == 6) {
                     // require shake and then display large sized happy version of pet, given color
-                    Toast.makeText(context, "Your pet has reached old age!", Toast.LENGTH_LONG)
-                        .show()
 
-                    // go to the AgeUpFragment
-                    findNavController().navigate(R.id.to_age_up)
 
-                    mood = "happy"
+                    if (petInfoViewModel.petData.value?.birthdayTwo == false){
+                        Toast.makeText(context, "Your pet has reached old age!", Toast.LENGTH_LONG)
+                            .show()
+                        // go to the AgeUpFragment
+                        petInfoViewModel.updateBirthday("Two", currPetKey)
+                        findNavController().navigate(R.id.to_age_up)
+
+                        mood = "happy"
+                    }
 
                 } else if (it.age == 9) {
                     // require shake and then redirect user to archive to see new pet
-                    mood = "happy"
-                    Toast.makeText(
-                        context,
-                        "Your pet is graduating! See it in the Archive!",
-                        Toast.LENGTH_LONG
-                    ).show()
 
-                    // go to the AgeUpFragment
-                    findNavController().navigate(R.id.to_age_up)
+                    if (petInfoViewModel.petData.value?.birthdayThree == false){
+                        Toast.makeText(
+                            context,
+                            "Your pet is graduating! See it in the Archive!",
+                            Toast.LENGTH_LONG
+                        ).show()
 
+                        // go to the AgeUpFragment
+                        petInfoViewModel.updateBirthday("Two", currPetKey)
+                        findNavController().navigate(R.id.to_age_up)
+                        mood = "happy"
 
-                    val bottomNavigationView =
-                        (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
+                        // TODO
+                        val bottomNavigationView =
+                            (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
 
-                    bottomNavigationView?.selectedItemId = R.id.navigation_gradPets
-                    Log.d(TAG, "navigated to gradPets")
-                    // set 'current' attribute to false
-                    petInfoViewModel.updateCurrentFlag(currPetKey)
-                    petInfoViewModel.petData.value = null
+                        bottomNavigationView?.selectedItemId = R.id.navigation_gradPets
+                        Log.d(TAG, "navigated to gradPets")
+                        // set 'current' attribute to false
+                        petInfoViewModel.updateCurrentFlag(currPetKey)
+                        petInfoViewModel.petData.value = null
+                    }
                 }
 
                 // finally display picture based on attributes

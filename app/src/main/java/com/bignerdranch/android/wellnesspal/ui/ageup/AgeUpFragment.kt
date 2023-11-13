@@ -73,7 +73,7 @@ class AgeUpFragment : Fragment(), SensorEventListener {
             Toast.makeText(context, "Pet has aged up!!", Toast.LENGTH_LONG)
                 .show()
             findNavController().popBackStack()
-
+            Log.d(TAG, "navigated back to PetInfo")
         }else{
             Toast.makeText(context, "Keep shaking your phone!", Toast.LENGTH_LONG)
                 .show()

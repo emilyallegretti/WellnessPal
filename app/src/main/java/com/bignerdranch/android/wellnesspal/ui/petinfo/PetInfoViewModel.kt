@@ -60,6 +60,12 @@ class PetInfoViewModel : ViewModel() {
         }
     }
 
+    fun updateBirthday(birthdayNum: String, currPetKey: String) {
+        if (currPetKey != "") {
+            dataRepository.updateBirthday(auth.currentUser!!.uid, currPetKey, birthdayNum)
+        }
+    }
+
     fun addMostRecentLogEventListener(logReference: Query) {
         Log.d(TAG, "addMostRecentLogEventListener")
         logsListener = object : ValueEventListener {

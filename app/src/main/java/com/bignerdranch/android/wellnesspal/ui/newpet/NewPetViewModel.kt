@@ -13,7 +13,7 @@ class NewPetViewModel: ViewModel() {
     private val dataRepository = DataRepository.get()
     private var auth = FirebaseAuth.getInstance()
     fun writeNewPet(name: String, color:String) {
-        val pet = Pet(name,0, color, "happy", true)
+        val pet = Pet(name,0, color, "happy", true, false, false, false)
        // return viewModelScope.async(Dispatchers.IO) {
         dataRepository.writePet(pet, auth.currentUser!!.uid)
       //  }.await()
