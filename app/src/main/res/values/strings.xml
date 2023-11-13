@@ -2,7 +2,7 @@
     <string name="app_name">WellnessPal</string>
     <string name="logs">Logs</string>
     <string name="resources">Resources</string>
-    <string name="grad_pets">Grad Pets</string>
+    <string name="grad_pets">Pet Archive</string>
     <string name="profile">Profile</string>
     <string name="pet">Pet</string>
     <string name="welcome_page_title">Welcome to Wellness Pal!</string>
@@ -43,6 +43,9 @@
     <string name="oz_water_left_to_reach_goal">Oz. water left to reach goal: %1$s</string>
     <string name="water_goal_note">Note: You have met your water goal for the day! You can still submit meal logs, but they won\'t count towards your pet\'s growth.</string>
     <string name="waterGoal">Water Goal: %1$s</string>
+    <string name="username">username\n</string>
+    <string name="signin">Sign In</string>
+    <string name="cancel">Cancel</string>
     <string-array name="colors_array">
         <item>Blue</item>
         <item>Purple</item>

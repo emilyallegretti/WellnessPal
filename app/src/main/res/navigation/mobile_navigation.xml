@@ -32,7 +32,7 @@
     <fragment
         android:id="@+id/navigation_water_log"
         android:name="com.bignerdranch.android.wellnesspal.ui.waterlog.WaterLogFragment"
-        android:label="WaterLog"
+        android:label="Add Water Log"
         tools:layout="@layout/fragment_water_log" />
 
     <fragment
@@ -45,13 +45,13 @@
     <fragment
         android:id="@+id/navigation_food_log"
         android:name="com.bignerdranch.android.wellnesspal.ui.foodlog.FoodLogFragment"
-        android:label="FoodLog"
+        android:label="Add Food Log"
         tools:layout="@layout/fragment_food_log" />
 
     <fragment
         android:id="@+id/navigation_sleep_log"
         android:name="com.bignerdranch.android.wellnesspal.ui.sleeplog.SleepLogFragment"
-        android:label="SleepLog"
+        android:label="Sleep Log"
         tools:layout="@layout/fragment_sleep_log" />
 
     <fragment
@@ -69,7 +69,7 @@
     <fragment
         android:id="@+id/navigation_gradPets"
         android:name="com.bignerdranch.android.wellnesspal.ui.gradpets.GradPetsFragment"
-        android:label="Grad Pets"
+        android:label="Pet Archive"
         tools:layout="@layout/fragment_grad_pets" />
 
     <fragment

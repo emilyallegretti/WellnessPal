@@ -105,9 +105,9 @@ class PetInfoFragment : Fragment() {
             val diff = petInfoViewModel.getDateDiff()
             Log.d(TAG, "observer fired for most recent log, $diff")
             // todo: change once debugging finishes
-            if (diff.toInt() < 0) {
+            if (diff.toInt() < 1) {
                 petInfoViewModel.setMood("happy", currPetKey)
-            } else if (diff.toInt() < 0)  {
+            } else if (diff.toInt() < 2)  {
                 petInfoViewModel.setMood("irritated", currPetKey)
                 Toast.makeText(context, "Your pet is irritated because you haven't submitted a log in 3 days! Make them happy again by submitting a log.", Toast.LENGTH_LONG).show()
             } else {
@@ -162,17 +162,16 @@ class PetInfoFragment : Fragment() {
                     // require shake and then display medium sized happy version of pet, given color
                     Toast.makeText(context, "Your pet has reached middle age!", Toast.LENGTH_LONG)
                         .show()
-                    mood = "happy"
+
 
                 } else if (it.age == 6) {
                     // require shake and then display large sized happy version of pet, given color
                     Toast.makeText(context, "Your pet has reached old age!", Toast.LENGTH_LONG)
                         .show()
-                    mood = "happy"
+
 
                 } else if (it.age == 9) {
                     // require shake and then redirect user to archive to see new pet
-                    mood = "happy"
                     Toast.makeText(
                         context,
                         "Your pet is graduating! See it in the Archive!",

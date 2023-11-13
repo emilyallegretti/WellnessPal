@@ -79,18 +79,20 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.99" />
+
     <TextView
         android:id="@+id/waterGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="35dp"
         android:text="Sleep Goal: "
         android:textSize="25dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.122"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintBottom_toTopOf="@+id/sleepLeftToGoalText"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
+        app:layout_constraintTop_toTopOf="@+id/guideline13"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/sleepLeftToGoalText"
@@ -98,10 +100,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="248dp"
         android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.116"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/text_sleep_log"
+        app:layout_constraintEnd_toStartOf="@+id/guideline12"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/guideline11"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0"
         tools:text="Hours Sleep Left to Meet Goal:" />
 
     <TextView
