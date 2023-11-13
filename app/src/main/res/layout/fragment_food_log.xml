@@ -16,29 +16,29 @@
         android:text="Enter the number of meals eaten"
         android:textAlignment="center"
         android:textSize="20sp"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintVertical_bias="0.5"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@id/guideline8"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@id/guideline7"
-        app:layout_constraintTop_toBottomOf="@id/guideline9" />
+        app:layout_constraintTop_toBottomOf="@id/guideline9"
+        app:layout_constraintVertical_bias="0.5" />
 
     <EditText
         android:id="@+id/fieldFoodLog"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:ellipsize="end"
-        android:inputType="number"
         android:hint="Number of meals"
+        android:inputType="number"
         android:maxLines="1"
         android:textAlignment="center"
-        app:layout_constraintWidth_percent="0.45"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@id/guideline7"
         app:layout_constraintEnd_toStartOf="@id/guideline8"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/guideline7"
         app:layout_constraintTop_toBottomOf="@+id/textFoodLog"
-        app:layout_constraintVertical_bias="0.155" />
+        app:layout_constraintVertical_bias="0.155"
+        app:layout_constraintWidth_percent="0.45" />
 
     <Button
         android:id="@+id/buttonSubmitFoodLog"
@@ -65,12 +65,13 @@
         android:orientation="vertical"
         app:layout_constraintGuide_percent="0.99" />
 
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.01" />
+        app:layout_constraintGuide_begin="25dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline10"
@@ -80,30 +81,45 @@
         app:layout_constraintGuide_percent="0.99"
         app:layout_constraintVertical_bias="0.286" />
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.13" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
     <TextView
         android:id="@+id/eatGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
         android:text="Meal Goal: "
         android:textSize="25dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline10"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.122"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
-        app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:layout_constraintVertical_bias="0.203" />
+        app:layout_constraintTop_toBottomOf="@+id/mealsLeftToGoalText"
+        app:layout_constraintVertical_bias="0.0" />
 
     <TextView
         android:id="@+id/mealsLeftToGoalText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
         android:textSize="25dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline10"
+        app:layout_constraintBottom_toTopOf="@+id/guideline12"
         app:layout_constraintEnd_toStartOf="@+id/guideline8"
-        app:layout_constraintHorizontal_bias="0.142"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/guideline7"
         app:layout_constraintTop_toTopOf="@+id/guideline9"
-        app:layout_constraintVertical_bias="0.129"
+        app:layout_constraintVertical_bias="0.253"
         tools:text="Meals Left to Meet Goal:" />
 
     <TextView

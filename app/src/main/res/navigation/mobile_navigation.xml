@@ -25,6 +25,7 @@
         <action
             android:id="@+id/to_grad_pets"
             app:destination="@id/navigation_gradPets" />
+
     </fragment>
 
 
@@ -77,6 +78,7 @@
         android:name="com.bignerdranch.android.wellnesspal.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
 
 
 </navigation>

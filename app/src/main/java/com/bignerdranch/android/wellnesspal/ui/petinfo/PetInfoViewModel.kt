@@ -28,7 +28,7 @@ class PetInfoViewModel : ViewModel() {
     val dataRepository = DataRepository.get()
     val auth: FirebaseAuth =FirebaseAuth.getInstance()
     lateinit var logsListener: ValueEventListener
-    var mostRecentLogDate = MutableLiveData<Date>()
+    var mostRecentLogDate = MutableLiveData(Date())
 
     fun updateCurrentFlag(currPetKey: String) {
         dataRepository.updateCurrentFlag(auth.currentUser!!.uid, currPetKey)
@@ -64,8 +64,10 @@ class PetInfoViewModel : ViewModel() {
         Log.d(TAG, "addMostRecentLogEventListener")
         logsListener = object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val log = snapshot.children.first().child("date").value as String
-                mostRecentLogDate.value = stringToDate(log.split(" ")[0])
+                if (snapshot.children.count() > 0) {
+                    val log = snapshot.children.first().child("date").value as String
+                    mostRecentLogDate.value = stringToDate(log.split(" ")[0])
+                }
             }
 
             override fun onCancelled(error: DatabaseError) {

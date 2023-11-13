@@ -123,6 +123,8 @@ class PetInfoFragment : Fragment() {
             Log.d(TAG, "observer fired for Pet")
             if (it != null) {
                 binding.petName.text = it.name
+                binding.ageInfo.text = getString(R.string.age, it.age.toString())
+                binding.nextLevelUpInfo.text
                 // build a filepath string for correct picture to set based on color, age, emotion
                 lateinit var mood: String
                 lateinit var size: String
@@ -138,10 +140,13 @@ class PetInfoFragment : Fragment() {
                 // if age is on a milestone age (3,6,9), display screen and level up pet
                 if (it.age!! < 3) {
                     size = "small"
-                } else if (it.age >= 3 && it.age < 6) {
+                    binding.nextLevelUpInfo.text = getString(R.string.next_level_up_age_3)
+                } else if (it.age!! >= 3 && it.age!! < 6) {
                     size = "medium"
-                } else if (it.age >= 6 && it.age <= 9) {
+                    binding.nextLevelUpInfo.text = getString(R.string.next_level_up_age_6)
+                } else if (it.age!! >= 6 && it.age!! <= 9) {
                     size = "large"
+                    binding.nextLevelUpInfo.text = getString(R.string.next_level_up_info_age_9)
                 }
 
 
@@ -212,6 +217,9 @@ class PetInfoFragment : Fragment() {
             sleepLogButton.setOnClickListener {
                 findNavController().navigate(R.id.to_sleep_log)
             }
+//            petInfoButton.setOnClickListener {
+//                PetInfoFragmentDirections.toInfoDialog(petInfoViewModel.petData.value?.name ?: "")
+//            }
         }
     }
 
