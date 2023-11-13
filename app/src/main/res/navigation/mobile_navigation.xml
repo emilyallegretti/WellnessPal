@@ -25,6 +25,9 @@
         <action
             android:id="@+id/to_grad_pets"
             app:destination="@id/navigation_gradPets" />
+        <action
+            android:id="@+id/to_age_up"
+            app:destination="@id/navigation_ageUp" />
     </fragment>
 
 
@@ -77,6 +80,12 @@
         android:name="com.bignerdranch.android.wellnesspal.ui.profile.ProfileFragment"
         android:label="Profile"
         tools:layout="@layout/fragment_profile" />
+
+    <fragment
+        android:id="@+id/navigation_ageUp"
+        android:name="com.bignerdranch.android.wellnesspal.ui.ageup.AgeUpFragment"
+        android:label="AgeUp"
+        tools:layout="@layout/fragment_age_up" />
 
 
 </navigation>

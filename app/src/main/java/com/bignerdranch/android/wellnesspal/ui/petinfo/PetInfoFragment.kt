@@ -162,12 +162,19 @@ class PetInfoFragment : Fragment() {
                     // require shake and then display medium sized happy version of pet, given color
                     Toast.makeText(context, "Your pet has reached middle age!", Toast.LENGTH_LONG)
                         .show()
+
+                    // go to the AgeUpFragment
+                    findNavController().navigate(R.id.to_age_up)
                     mood = "happy"
 
                 } else if (it.age == 6) {
                     // require shake and then display large sized happy version of pet, given color
                     Toast.makeText(context, "Your pet has reached old age!", Toast.LENGTH_LONG)
                         .show()
+
+                    // go to the AgeUpFragment
+                    findNavController().navigate(R.id.to_age_up)
+
                     mood = "happy"
 
                 } else if (it.age == 9) {
@@ -178,6 +185,11 @@ class PetInfoFragment : Fragment() {
                         "Your pet is graduating! See it in the Archive!",
                         Toast.LENGTH_LONG
                     ).show()
+
+                    // go to the AgeUpFragment
+                    findNavController().navigate(R.id.to_age_up)
+
+
                     val bottomNavigationView =
                         (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
 
