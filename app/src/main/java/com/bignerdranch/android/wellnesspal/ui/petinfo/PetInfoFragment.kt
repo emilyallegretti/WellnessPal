@@ -199,28 +199,28 @@ class PetInfoFragment : Fragment() {
                 } else if (it.age == 9) {
                     // require shake and then redirect user to archive to see new pet
 
-                    if (petInfoViewModel.petData.value?.birthdayThree == false){
-                        Toast.makeText(
-                            context,
-                            "Your pet is graduating! See it in the Archive!",
-                            Toast.LENGTH_LONG
-                        ).show()
 
-                        // go to the AgeUpFragment
-                        petInfoViewModel.updateBirthday("Two", currPetKey)
-                        findNavController().navigate(R.id.to_age_up)
-                        mood = "happy"
+                    Toast.makeText(
+                        context,
+                        "Your pet is graduating! See it in the Archive!",
+                        Toast.LENGTH_LONG
+                    ).show()
 
-                        // TODO
-                        val bottomNavigationView =
-                            (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
+                    // go to the AgeUpFragment
+                    petInfoViewModel.updateBirthday("Three", currPetKey)
 
-                        bottomNavigationView?.selectedItemId = R.id.navigation_gradPets
-                        Log.d(TAG, "navigated to gradPets")
-                        // set 'current' attribute to false
-                        petInfoViewModel.updateCurrentFlag(currPetKey)
-                        petInfoViewModel.petData.value = null
-                    }
+                    mood = "happy"
+
+                    // TODO
+                    val bottomNavigationView =
+                        (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
+
+                    bottomNavigationView?.selectedItemId = R.id.navigation_gradPets
+                    Log.d(TAG, "navigated to gradPets")
+                    // set 'current' attribute to false
+                    petInfoViewModel.updateCurrentFlag(currPetKey)
+                    petInfoViewModel.petData.value = null
+
                 }
 
                 // finally display picture based on attributes
