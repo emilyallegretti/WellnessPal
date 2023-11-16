@@ -326,11 +326,11 @@ class PetInfoFragment : Fragment() {
 
             } else if (size == "large"){
                 if (color == "blue") {
-                    image.setImageResource(R.drawable.small_blue_happy)
+                    image.setImageResource(R.drawable.large_blue_happy)
                 } else if (color == "red") {
-                    image.setImageResource(R.drawable.small_red_happy)
+                    image.setImageResource(R.drawable.large_red_happy)
                 } else {
-                    image.setImageResource(R.drawable.small_purple_happy)
+                    image.setImageResource(R.drawable.large_purple_happy)
                 }
             }
         } else if (mood == "irritated") {
@@ -353,11 +353,11 @@ class PetInfoFragment : Fragment() {
 
             } else if (size == "large"){
                 if (color == "blue") {
-                    image.setImageResource(R.drawable.small_blue_mad)
+                    image.setImageResource(R.drawable.large_blue_mad)
                 } else if (color == "red") {
-                    image.setImageResource(R.drawable.small_red_mad)
+                    image.setImageResource(R.drawable.large_red_mad)
                 } else {
-                    image.setImageResource(R.drawable.small_purple_mad)
+                    image.setImageResource(R.drawable.large_purple_mad)
                 }
             }
 
@@ -381,11 +381,11 @@ class PetInfoFragment : Fragment() {
 
             } else if (size == "large"){
                 if (color == "blue") {
-                    image.setImageResource(R.drawable.small_blue_sad)
+                    image.setImageResource(R.drawable.large_blue_sad)
                 } else if (color == "red") {
-                    image.setImageResource(R.drawable.small_red_sad)
+                    image.setImageResource(R.drawable.large_red_sad)
                 } else {
-                    image.setImageResource(R.drawable.small_purple_sad)
+                    image.setImageResource(R.drawable.large_purple_sad)
                 }
             }
         }
