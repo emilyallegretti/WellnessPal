@@ -9,14 +9,16 @@
 
     <ImageView
         android:id="@+id/petImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:src="@drawable/small_blue_happy"
+        app:layout_constraintHorizontal_bias="0.3"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintHeight_percent="0.95"
         app:layout_constraintBottom_toTopOf="@id/guideline39"
         app:layout_constraintEnd_toStartOf="@id/guideline38"
         app:layout_constraintStart_toEndOf="@id/guideline37"
-        app:layout_constraintTop_toBottomOf="@id/guideline29"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@id/guideline29" />
 
     <ImageButton
         android:id="@+id/foodLogButton"
@@ -48,8 +50,7 @@
         app:layout_constraintEnd_toEndOf="@id/foodLogButton"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/foodLogButton"
-        app:layout_constraintTop_toBottomOf="@+id/foodLogButton"
-        app:layout_constraintVertical_bias="0.8" />
+        app:layout_constraintTop_toBottomOf="@+id/foodLogButton"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline37"
@@ -63,21 +64,21 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.95" />
+        app:layout_constraintGuide_percent="0.99" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline35"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.35" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.9" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline29"
@@ -101,7 +102,7 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/ageInfo"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
-        app:layout_constraintStart_toStartOf="@+id/guideline37"
+        app:layout_constraintStart_toEndOf="@+id/guideline45"
         app:layout_constraintTop_toBottomOf="@+id/guideline29"
         tools:text="Pet Name" />
 
@@ -112,7 +113,7 @@
         android:text="Age: "
         app:layout_constraintBottom_toTopOf="@+id/nextLevelUpInfo"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
-        app:layout_constraintStart_toStartOf="@+id/guideline37"
+        app:layout_constraintStart_toEndOf="@+id/guideline45"
         app:layout_constraintTop_toBottomOf="@+id/petName" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -120,7 +121,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.15" />
+        app:layout_constraintGuide_percent="0.3" />
 
     <TextView
         android:id="@+id/nextLevelUpInfo"
@@ -128,20 +129,15 @@
         android:layout_height="wrap_content"
         android:text="Next Level Up: "
         app:layout_constraintBottom_toTopOf="@+id/guideline28"
-        app:layout_constraintTop_toBottomOf="@id/ageInfo"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
-        app:layout_constraintStart_toEndOf="@+id/guideline37" />
+        app:layout_constraintStart_toEndOf="@+id/guideline45"
+        app:layout_constraintTop_toBottomOf="@id/ageInfo" />
 
-    <!--    <Button-->
-<!--        android:id="@+id/petInfoButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:text="Pet Info"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/guideline35"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline38"-->
-<!--        app:layout_constraintHorizontal_bias="0.497"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline37"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/petName"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline45"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.65" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
