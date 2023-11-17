@@ -12,7 +12,19 @@ import com.bignerdranch.android.wellnesspal.models.UserLog
 class LogHolder (
     private val binding: ListItemLogBinding) : RecyclerView.ViewHolder(binding.root){
         fun bind(log: UserLog){
-            binding.logInfo.text = log.toString()
+            binding.logType.text = log.type.toString()
+            if(log.ozWater != null){
+                binding.logValue.text = log.ozWater
+            }
+            else if(log.hoursSlept != null){
+                binding.logValue.text = log.hoursSlept
+            }
+            else if(log.numMeals != null){
+                binding.logValue.text = log.numMeals
+            }
+
+            binding.logDate.text = log.date
+
         }
 }
 
