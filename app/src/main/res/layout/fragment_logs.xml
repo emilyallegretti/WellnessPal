@@ -16,7 +16,7 @@ android:paddingBottom="?attr/actionBarSize">
     app:layout_constraintStart_toEndOf="@+id/guideline40"
     app:layout_constraintTop_toBottomOf="@+id/guideline42"
     app:layout_constraintBottom_toTopOf="@id/guideline43"
-    app:layout_constraintVertical_bias="0.02"/>
+    app:layout_constraintVertical_bias="0"/>
 
 <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline40"
@@ -37,7 +37,7 @@ android:paddingBottom="?attr/actionBarSize">
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    app:layout_constraintGuide_percent="0.03" />
+    app:layout_constraintGuide_percent="0.01" />
 
 <androidx.constraintlayout.widget.Guideline
     android:id="@+id/guideline43"

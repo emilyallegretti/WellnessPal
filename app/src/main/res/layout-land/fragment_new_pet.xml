@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="?attr/actionBarSize"
+    tools:context=".ui.newpet.NewPetFragment">
+
+    <TextView
+        android:id="@+id/new_pet_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/create_pet_title"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toTopOf="@id/petNameField"
+        app:layout_constraintEnd_toStartOf="@id/guideline46"
+        app:layout_constraintStart_toEndOf="@id/guideline40"
+        app:layout_constraintTop_toBottomOf="@id/guideline42" />
+
+    <EditText
+        android:id="@+id/petNameField"
+        android:layout_width="241dp"
+        android:layout_height="61dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="text"
+        app:layout_constraintBottom_toTopOf="@id/collar_choices"
+        app:layout_constraintEnd_toStartOf="@id/guideline46"
+        app:layout_constraintStart_toEndOf="@id/guideline40"
+        app:layout_constraintTop_toBottomOf="@+id/new_pet_title" />
+
+    <Spinner
+        android:id="@+id/collar_choices"
+        android:layout_width="290dp"
+        android:layout_height="46dp"
+        android:spinnerMode="dropdown"
+        app:layout_constraintBottom_toTopOf="@id/submitNewPetButton"
+        app:layout_constraintEnd_toStartOf="@id/guideline46"
+        app:layout_constraintStart_toEndOf="@id/guideline40"
+        app:layout_constraintTop_toBottomOf="@+id/petNameField" />
+
+
+    <Button
+        android:id="@+id/submitNewPetButton"
+        android:layout_width="154dp"
+        android:layout_height="55dp"
+        android:text="Create Pet"
+        app:layout_constraintBottom_toTopOf="@id/guideline43"
+        app:layout_constraintEnd_toStartOf="@id/guideline46"
+        app:layout_constraintStart_toEndOf="@id/guideline40"
+        app:layout_constraintTop_toBottomOf="@id/collar_choices" />
+
+
+    <ImageView
+        android:id="@+id/petPreviewImage"
+        android:layout_width="196dp"
+        android:layout_height="283dp"
+        android:src="@drawable/small_blue_happy"
+        app:layout_constraintBottom_toTopOf="@id/guideline43"
+        app:layout_constraintEnd_toStartOf="@id/guideline41"
+        app:layout_constraintStart_toEndOf="@id/guideline46"
+        app:layout_constraintTop_toBottomOf="@id/guideline42" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.01" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.99" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.032831736" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.95" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

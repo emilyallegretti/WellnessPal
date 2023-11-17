@@ -3,8 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="?attr/actionBarSize">
+    android:layout_height="match_parent">
 
     <!-- This code was inspired by:
      https://github.com/firebase/quickstart-android/blob/master/database/app/src/main/res/layout/fragment_sign_in.xml
@@ -14,87 +13,87 @@
         android:id="@+id/fieldLname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
         android:ellipsize="end"
         android:hint="Last Name"
         android:inputType="textPersonName"
         android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
+        app:layout_constraintEnd_toStartOf="@id/guideline33"
+        app:layout_constraintBottom_toTopOf="@id/fieldEmail"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/fieldFname" />
+        app:layout_constraintStart_toEndOf="@+id/guideline29"
+        app:layout_constraintTop_toBottomOf="@+id/fieldFname"
+        app:layout_constraintWidth_percent="0.25" />
 
     <EditText
         android:id="@+id/fieldFname"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
         android:ellipsize="end"
         android:hint="First Name"
         android:inputType="textPersonName"
         android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@+id/headerUserInfo"
+        app:layout_constraintBottom_toTopOf="@id/fieldLname"
         app:layout_constraintEnd_toStartOf="@id/guideline33"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/guideline29" />
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@id/guideline29"
+        app:layout_constraintTop_toBottomOf="@+id/headerUserInfo"
+        app:layout_constraintWidth_percent="0.25" />
 
     <EditText
         android:id="@+id/fieldEmail"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
         android:ellipsize="end"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
         android:maxLines="1"
+        app:layout_constraintBottom_toTopOf="@+id/fieldPassword"
         app:layout_constraintEnd_toStartOf="@+id/guideline33"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/guideline29"
-        app:layout_constraintTop_toBottomOf="@id/fieldFname" />
+        app:layout_constraintTop_toBottomOf="@id/fieldLname"
+        app:layout_constraintWidth_percent="0.25" />
     <!--TODO: re-enter password feature? -->
     <EditText
         android:id="@+id/fieldPassword"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
         android:ellipsize="end"
         android:hint="@string/password"
         android:inputType="textPassword"
         android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
+        app:layout_constraintEnd_toStartOf="@id/guideline33"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/guideline33"
-        app:layout_constraintTop_toTopOf="@+id/fieldEmail" />
+        app:layout_constraintStart_toEndOf="@+id/guideline29"
+        app:layout_constraintTop_toBottomOf="@+id/fieldEmail"
+        app:layout_constraintBottom_toTopOf="@+id/guideline34"
+        app:layout_constraintWidth_percent="0.25" />
 
 
     <Button
         android:id="@+id/buttonSignUp"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.4"
-        app:layout_constraintHeight_percent="0.1"
         android:text="@string/sign_up"
         android:textSize="20dp"
         app:layout_constraintBottom_toTopOf="@id/guideline32"
         app:layout_constraintEnd_toStartOf="@id/guideline30"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toEndOf="@id/guideline29"
-        app:layout_constraintTop_toBottomOf="@id/fieldFoodGoal"
-        app:layout_constraintVertical_bias="0.3" />
+        app:layout_constraintHeight_percent="0.2"
+        app:layout_constraintStart_toEndOf="@id/guideline48"
+        app:layout_constraintTop_toBottomOf="@id/guideline31"
+        app:layout_constraintWidth_percent="0.25" />
 
     <TextView
         android:id="@+id/headerUserInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0.02"
         android:text="User Information"
         android:textSize="25dp"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/fieldFname"
+        app:layout_constraintEnd_toStartOf="@id/guideline33"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/guideline29"
-        app:layout_constraintTop_toBottomOf="@id/guideline31"
-        app:layout_constraintBottom_toTopOf="@id/guideline32"/>
+        app:layout_constraintTop_toBottomOf="@id/guideline31" />
     <!--TODO: more detail for users on this page, like a note that the users can changethe information later on-->
     <TextView
         android:id="@+id/headerGoals"
@@ -102,12 +101,12 @@
         android:layout_height="wrap_content"
         android:text="Goals Per Day"
         android:textSize="25dp"
-        app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintTop_toBottomOf="@id/fieldEmail"
-        app:layout_constraintBottom_toTopOf="@id/guideline32"
-        app:layout_constraintStart_toEndOf="@id/guideline29"
+        app:layout_constraintBottom_toBottomOf="@id/headerUserInfo"
+        app:layout_constraintEnd_toStartOf="@id/guideline48"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintEnd_toStartOf="@id/guideline33" />
+        app:layout_constraintStart_toEndOf="@id/guideline33"
+        app:layout_constraintTop_toTopOf="@id/headerUserInfo"
+        app:layout_constraintVertical_bias="0.03" />
 
     <EditText
         android:id="@+id/fieldWaterGoal"
@@ -117,50 +116,50 @@
         android:hint="@string/water_goal"
         android:inputType="numberDecimal"
         android:maxLines="1"
-        app:layout_constraintBottom_toTopOf="@+id/guideline32"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
+        app:layout_constraintBottom_toTopOf="@+id/fieldSleepGoal"
+        app:layout_constraintEnd_toStartOf="@id/guideline48"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/headerGoals"
-        app:layout_constraintTop_toBottomOf="@id/fieldEmail"
-        app:layout_constraintVertical_bias="0.303"
-        app:layout_constraintWidth_percent="0.4" />
+        app:layout_constraintStart_toEndOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@id/headerGoals"
+        app:layout_constraintWidth_percent="0.25" />
 
     <EditText
         android:id="@+id/fieldFoodGoal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
         android:layout_marginTop="4dp"
         android:ellipsize="end"
         android:hint="@string/num_meals"
         android:inputType="numberDecimal"
         android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
+        app:layout_constraintEnd_toStartOf="@id/guideline48"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/fieldSleepGoal"
-        app:layout_constraintTop_toBottomOf="@+id/fieldSleepGoal" />
+        app:layout_constraintBottom_toTopOf="@+id/guideline34"
+        app:layout_constraintStart_toEndOf="@+id/guideline33"
+        app:layout_constraintTop_toBottomOf="@+id/fieldSleepGoal"
+        app:layout_constraintWidth_percent="0.25" />
 
     <EditText
         android:id="@+id/fieldSleepGoal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintWidth_percent="0.4"
-        android:layout_marginTop="8dp"
         android:ellipsize="end"
         android:hint="@string/hours_sleep"
         android:inputType="numberDecimal"
         android:maxLines="1"
-        app:layout_constraintEnd_toStartOf="@id/guideline30"
+        app:layout_constraintEnd_toStartOf="@id/guideline48"
         app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@+id/fieldFoodGoal"
         app:layout_constraintStart_toStartOf="@+id/fieldWaterGoal"
-        app:layout_constraintTop_toBottomOf="@+id/fieldWaterGoal" />
+        app:layout_constraintTop_toBottomOf="@+id/fieldWaterGoal"
+        app:layout_constraintWidth_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline29"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.05" />
+        app:layout_constraintGuide_percent="0.02" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -189,7 +188,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_percent="0.5" />
+        app:layout_constraintGuide_percent="0.33" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline34"
@@ -197,5 +196,19 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.8" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.66" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
