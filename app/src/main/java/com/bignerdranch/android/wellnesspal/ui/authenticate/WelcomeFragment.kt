@@ -40,14 +40,14 @@ class WelcomeFragment : Fragment() {
                     findNavController().navigate(R.id.to_sign_in)
                 }
                else{
-                   Toast.makeText(view.context, "No Internet Connenction", Toast.LENGTH_SHORT).show()
+                   Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
                 }
             }
             buttonSignUp.setOnClickListener {
                 if (checkForInternet(view.context)) {
                     findNavController().navigate(R.id.to_sign_up)
                 }else{
-                    Toast.makeText(view.context, "No Internet Connenction", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
 
                 }
             }
