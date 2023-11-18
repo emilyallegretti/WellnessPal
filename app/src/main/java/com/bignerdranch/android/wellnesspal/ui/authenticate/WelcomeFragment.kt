@@ -5,6 +5,11 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.wellnesspal.R
@@ -31,10 +36,20 @@ class WelcomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
             buttonSignIn.setOnClickListener {
-                findNavController().navigate(R.id.to_sign_in)
+                if(checkForInternet(view.context)){
+                    findNavController().navigate(R.id.to_sign_in)
+                }
+               else{
+                   Toast.makeText(view.context, "No Internet Connenction", Toast.LENGTH_SHORT).show()
+                }
             }
             buttonSignUp.setOnClickListener {
-                findNavController().navigate(R.id.to_sign_up)
+                if (checkForInternet(view.context)) {
+                    findNavController().navigate(R.id.to_sign_up)
+                }else{
+                    Toast.makeText(view.context, "No Internet Connenction", Toast.LENGTH_SHORT).show()
+
+                }
             }
         }
 
@@ -45,5 +60,23 @@ class WelcomeFragment : Fragment() {
             super.onDestroyView()
             _binding = null
         }
+        //Code from geeks for geeks geeksforgeeks.com
+        private fun checkForInternet(context: Context): Boolean{
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
-    }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                val network = connectivityManager.activeNetwork?:return false
+                val activeNetwork = connectivityManager.getNetworkCapabilities(network)?:return false
+                return when {
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                    activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                    else -> false
+                }
+            }else{
+                @Suppress("DEPRECATION") val networkInfo = connectivityManager.activeNetworkInfo?: return false
+                @Suppress("DEPRECATION")
+                return networkInfo.isConnected
+            }
+        }
+
+}
