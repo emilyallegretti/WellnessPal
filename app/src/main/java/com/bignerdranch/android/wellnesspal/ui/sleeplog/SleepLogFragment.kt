@@ -1,5 +1,9 @@
 package com.bignerdranch.android.wellnesspal.ui.sleeplog
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -95,33 +99,37 @@ class SleepLogFragment : Fragment() {
         binding.apply {
             buttonSubmitSleepLog.setOnClickListener {
                 val amt = fieldSleepLog.text.toString()
-                // restrict user from entering 0 or empty string
-                if (amt == "") {
-                    Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG)
-                } else {
-                    //TODO: UNCOMMENT THIS BLOCK WHEN DEBUGGING IS DONE
+                if (checkForInternet(view.context)) {
+                    // restrict user from entering 0 or empty string
+                    if (amt == "") {
+                        Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG)
+                    } else {
+                        //TODO: UNCOMMENT THIS BLOCK WHEN DEBUGGING IS DONE
 //                if (amt.toInt() <= 0) {
-                    //               Toast.makeText(context, R.string.non_positive_num_err, Toast.LENGTH_LONG)
+                        //               Toast.makeText(context, R.string.non_positive_num_err, Toast.LENGTH_LONG)
 //                } else {
-                    sleepLogViewModel.writeNewSleepLog(amt)
-                    // every time total meal count changes,
-                    // check if the total amount of meals logged equals the daily goal
-                    // if so, update the age of the pet
-                    val goal = sleepLogViewModel.goalData.value?.toInt() ?: 0
-                    val totalLogs = sleepLogViewModel.totalLogsCurrDateData.value?.toInt() ?: 0
-                    Log.d(TAG, "total logs: $totalLogs, goal: $goal")
-                    if (goal <= totalLogs + amt.toInt()) {//&& !foodLogViewModel.goalMet) {      //  TODO: UNCOMMENT WHEN DEBUGGING DONE
-                        Log.d(TAG, "daily goal reached, incrementing age")
-                        val petName = sleepLogViewModel.currPet.name
-                        Toast.makeText(
-                            context,
-                            "$petName's age just increased by 1!",
-                            Toast.LENGTH_SHORT
-                        ).show()
-                        sleepLogViewModel.incrementPetAge()
+                        sleepLogViewModel.writeNewSleepLog(amt)
+                        // every time total meal count changes,
+                        // check if the total amount of meals logged equals the daily goal
+                        // if so, update the age of the pet
+                        val goal = sleepLogViewModel.goalData.value?.toInt() ?: 0
+                        val totalLogs = sleepLogViewModel.totalLogsCurrDateData.value?.toInt() ?: 0
+                        Log.d(TAG, "total logs: $totalLogs, goal: $goal")
+                        if (goal <= totalLogs + amt.toInt()) {//&& !foodLogViewModel.goalMet) {      //  TODO: UNCOMMENT WHEN DEBUGGING DONE
+                            Log.d(TAG, "daily goal reached, incrementing age")
+                            val petName = sleepLogViewModel.currPet.name
+                            Toast.makeText(
+                                context,
+                                "$petName's age just increased by 1!",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            sleepLogViewModel.incrementPetAge()
+                        }
+                        findNavController().popBackStack()
+                        // }
                     }
-                    findNavController().popBackStack()
-                    // }
+                }else{
+                    Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
                 }
             }
         }
@@ -135,5 +143,24 @@ class SleepLogFragment : Fragment() {
         goalRef.removeEventListener(sleepLogViewModel.goalListener)
         logsQuery.removeEventListener(sleepLogViewModel.logsListener)
         _binding = null
+    }
+
+    //Code from geeks for geeks geeksforgeeks.com
+    private fun checkForInternet(context: Context): Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            val network = connectivityManager.activeNetwork?:return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network)?:return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            @Suppress("DEPRECATION") val networkInfo = connectivityManager.activeNetworkInfo?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
     }
 }
