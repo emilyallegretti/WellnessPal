@@ -1,5 +1,9 @@
 package com.bignerdranch.android.wellnesspal.ui.newpet
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -54,13 +59,16 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
 
         // set event listener for submit button
-        binding.submitNewPetButton.setOnClickListener{
-
-            newPetViewModel.writeNewPet(
-                binding.petNameField.text.toString(),
-                colorDropdown.selectedItem.toString()
-            )
-            findNavController().popBackStack()
+        binding.submitNewPetButton.setOnClickListener {
+            if (checkForInternet(view.context)) {
+                newPetViewModel.writeNewPet(
+                    binding.petNameField.text.toString(),
+                    colorDropdown.selectedItem.toString()
+                )
+                findNavController().popBackStack()
+            }else{
+                Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
+            }
         }
         // whenever a new selection is made, update the cat preview picture to contain the selected color
         colorDropdown.onItemSelectedListener = this
@@ -86,5 +94,22 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
         TODO("Not yet implemented")
     }
 
+    //Code from geeks for geeks geeksforgeeks.com
+    private fun checkForInternet(context: Context): Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            val network = connectivityManager.activeNetwork?:return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network)?:return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            @Suppress("DEPRECATION") val networkInfo = connectivityManager.activeNetworkInfo?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
 }
