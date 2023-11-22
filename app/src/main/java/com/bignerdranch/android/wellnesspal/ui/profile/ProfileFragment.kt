@@ -76,6 +76,7 @@ class ProfileFragment : Fragment() {
         gradPetsQuery = database.child("users").child(auth.currentUser!!.uid).child("pets").orderByChild("age").equalTo(9.0)
         profileViewModel.addGradPetCountEventListener(gradPetsQuery)
 
+
         binding.apply {
             // when user signs out, return to the initial AuthActivity screen
             buttonSignOut.setOnClickListener {

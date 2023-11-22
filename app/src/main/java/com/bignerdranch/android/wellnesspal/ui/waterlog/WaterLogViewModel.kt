@@ -113,7 +113,6 @@ class WaterLogViewModel : ViewModel(){
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
         }
         query.addValueEventListener(logsListener)

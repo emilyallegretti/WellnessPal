@@ -211,7 +211,6 @@ class PetInfoFragment : Fragment() {
 
                     mood = "happy"
 
-                    // TODO
                     val bottomNavigationView =
                         (activity as? MainActivity)?.findViewById<BottomNavigationView>(R.id.nav_view)
 

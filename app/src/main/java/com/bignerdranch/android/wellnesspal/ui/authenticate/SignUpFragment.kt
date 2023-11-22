@@ -20,7 +20,6 @@ class SignUpFragment: Fragment() {
     private var _binding: FragmentSignUpBinding? = null
     private lateinit var auth : FirebaseAuth
     private lateinit var signUpViewModel: SignUpViewModel
-// todo: comments
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -64,13 +63,24 @@ class SignUpFragment: Fragment() {
         } else {
             binding.fieldEmail.error = null
         }
-//todo: validate rest of form
         if (TextUtils.isEmpty(binding.fieldPassword.text.toString())) {
             binding.fieldPassword.error = "Required"
             result = false
         } else {
             binding.fieldPassword.error = null
         }
+    if (TextUtils.isEmpty(binding.fieldFname.text.toString())) {
+        binding.fieldFname.error = "Required"
+        result = false
+    } else {
+        binding.fieldFname.error = null
+    }
+    if (TextUtils.isEmpty(binding.fieldLname.text.toString())) {
+        binding.fieldLname.error = "Required"
+        result = false
+    } else {
+        binding.fieldLname.error = null
+    }
     if (TextUtils.isEmpty(binding.fieldSleepGoal.text.toString())) {
         binding.fieldSleepGoal.error = "Required"
         result = false
@@ -97,11 +107,10 @@ class SignUpFragment: Fragment() {
             if (!validateForm()) {
                 return
             }
-            //todo: hash password
             // if sign-up successful, start MainActivity
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 Log.d("SignUpFragment", "current signed in user: "+ auth.currentUser!!.uid)
-                signUpViewModel.writeUser(email, password, fname,lname)
+                signUpViewModel.writeUser(email,fname,lname)
                 signUpViewModel.writeGoal(waterGoal, mealGoal, sleepGoal)
                 startActivity(Intent(activity, MainActivity::class.java))
             }.addOnFailureListener{

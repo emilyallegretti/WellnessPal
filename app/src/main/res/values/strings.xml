@@ -50,6 +50,7 @@
     <string name="next_level_up_age_3">Next Level Up: Age 3</string>
     <string name="next_level_up_age_6">Next Level Up: Age 6</string>
     <string name="next_level_up_info_age_9">Next Level Up Info: Age 9</string>
+    <string name="daily_goals">Daily Goals</string>
     <string-array name="colors_array">
         <item>Blue</item>
         <item>Purple</item>
