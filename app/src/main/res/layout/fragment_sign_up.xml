@@ -34,10 +34,10 @@
         android:hint="First Name"
         android:inputType="textPersonName"
         android:maxLines="1"
-        app:layout_constraintTop_toBottomOf="@+id/headerUserInfo"
         app:layout_constraintEnd_toStartOf="@id/guideline33"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@id/guideline29" />
+        app:layout_constraintStart_toEndOf="@id/guideline29"
+        app:layout_constraintTop_toBottomOf="@+id/headerUserInfo" />
 
     <EditText
         android:id="@+id/fieldEmail"
@@ -51,7 +51,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toEndOf="@id/guideline29"
-        app:layout_constraintTop_toBottomOf="@id/headerGoals" />
+        app:layout_constraintTop_toBottomOf="@id/fieldFname" />
     <!--TODO: re-enter password feature? -->
     <EditText
         android:id="@+id/fieldPassword"
@@ -84,27 +84,25 @@
         android:id="@+id/headerUserInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintVertical_bias="0.02"
         android:text="User Information"
         android:textSize="25dp"
+        app:layout_constraintBottom_toTopOf="@id/guideline32"
         app:layout_constraintEnd_toStartOf="@id/guideline30"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/guideline29"
         app:layout_constraintTop_toBottomOf="@id/guideline31"
-        app:layout_constraintBottom_toTopOf="@id/guideline32"/>
+        app:layout_constraintVertical_bias="0.02" />
     <!--TODO: more detail for users on this page, like a note that the users can changethe information later on-->
+
     <TextView
         android:id="@+id/headerGoals"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Goals Per Day"
         android:textSize="25dp"
-        app:layout_constraintVertical_bias="0.03"
-        app:layout_constraintTop_toBottomOf="@id/fieldFname"
-        app:layout_constraintBottom_toTopOf="@id/guideline32"
-        app:layout_constraintStart_toEndOf="@id/guideline29"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintEnd_toStartOf="@id/guideline33" />
+        app:layout_constraintBottom_toTopOf="@+id/fieldWaterGoal"
+        app:layout_constraintEnd_toStartOf="@+id/guideline33"
+        app:layout_constraintStart_toStartOf="@+id/guideline29" />
 
     <EditText
         android:id="@+id/fieldWaterGoal"
@@ -114,12 +112,12 @@
         android:hint="@string/water_goal"
         android:inputType="numberDecimal"
         android:maxLines="1"
-        app:layout_constraintVertical_bias="0.3"
+        app:layout_constraintBottom_toTopOf="@+id/guideline32"
         app:layout_constraintEnd_toStartOf="@id/guideline30"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/headerGoals"
         app:layout_constraintTop_toBottomOf="@id/fieldEmail"
-        app:layout_constraintBottom_toTopOf="@+id/guideline32"/>
+        app:layout_constraintVertical_bias="0.3" />
 
     <EditText
         android:id="@+id/fieldFoodGoal"
