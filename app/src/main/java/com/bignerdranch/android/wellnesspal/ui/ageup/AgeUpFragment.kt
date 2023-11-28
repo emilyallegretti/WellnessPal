@@ -57,7 +57,11 @@ class AgeUpFragment : Fragment(), SensorEventListener {
         val image = binding.ageUpPetImage
         image.setImageResource(R.drawable.baseline_cake_24)
 
-        binding.shakeInstruction.text = "Shake your phone to age up!"
+        if(accelerometer != null){
+            binding.shakeInstruction.text = "Shake your phone to age up!"
+        }else {
+            binding.shakeInstruction.text = "Accelerometer not detected, please skip"
+        }
 
         binding.skipButton.text = "SKIP"
 
