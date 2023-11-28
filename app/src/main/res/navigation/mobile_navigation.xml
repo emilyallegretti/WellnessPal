@@ -28,6 +28,9 @@
         <action
             android:id="@+id/to_age_up"
             app:destination="@id/navigation_ageUp" />
+        <action
+            android:id="@+id/to_help_fragment"
+            app:destination="@id/helpFragment" />
     </fragment>
 
 
@@ -94,6 +97,10 @@
         android:id="@+id/reauthenticateFragment"
         android:name="com.bignerdranch.android.wellnesspal.ui.authenticate.ReauthenticateFragment"
         android:label="ReauthenticateFragment" />
+    <dialog
+        android:id="@+id/helpFragment"
+        android:name="com.bignerdranch.android.wellnesspal.ui.authenticate.HelpFragment"
+        android:label="HelpFragment" />
 
 
 </navigation>
