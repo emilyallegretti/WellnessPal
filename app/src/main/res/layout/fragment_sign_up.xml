@@ -68,7 +68,7 @@
 
 
     <Button
-        android:id="@+id/buttonSignUp"
+        android:id="@+id/buttonCreateAccount"
         android:layout_width="200dp"
         android:layout_height="90dp"
         android:text="@string/sign_up"

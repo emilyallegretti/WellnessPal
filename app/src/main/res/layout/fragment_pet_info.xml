@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,6 +18,7 @@
         android:src="@drawable/small_blue_happy"
         app:layout_constraintBottom_toTopOf="@id/guideline39"
         app:layout_constraintEnd_toStartOf="@id/guideline38"
+        app:layout_constraintHorizontal_bias="0.736"
         app:layout_constraintStart_toEndOf="@id/guideline37"
         app:layout_constraintTop_toBottomOf="@id/guideline29"
         app:layout_constraintVertical_bias="0.0" />
@@ -72,14 +74,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="413dp" />
+        app:layout_constraintGuide_percent="0.28" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline36"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.8" />
+        app:layout_constraintGuide_percent="0.73" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline29"
@@ -93,7 +95,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.99" />
+        app:layout_constraintGuide_begin="890dp" />
 
 
     <TextView
@@ -112,9 +114,10 @@
         android:id="@+id/ageInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
         android:text="Age: "
-        app:layout_constraintBottom_toTopOf="@+id/nextLevelUpInfo"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
+        app:layout_constraintHorizontal_bias="0.466"
         app:layout_constraintStart_toStartOf="@+id/guideline37"
         app:layout_constraintTop_toBottomOf="@+id/petName" />
 
@@ -124,27 +127,58 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.15" />
+    <!--    <androidx.constraintlayout.widget.Guideline-->
+    <!--        android:id="@+id/guideline29"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:orientation="horizontal"-->
+    <!--        app:layout_constraintGuide_percent="0.15" />-->
+
 
     <TextView
         android:id="@+id/nextLevelUpInfo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="9dp"
+        android:layout_marginBottom="4dp"
         android:text="Next Level Up: "
         app:layout_constraintBottom_toTopOf="@+id/guideline28"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
-        app:layout_constraintStart_toStartOf="@+id/guideline37" />
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/guideline37"
+        app:layout_constraintTop_toBottomOf="@+id/ageInfo"
+        app:layout_constraintVertical_bias="0.0" />
+
+<!--    <Button-->
+<!--        android:id="@+id/helpButton"-->
+<!--        android:layout_width="66dp"-->
+<!--        android:layout_height="47dp"-->
+<!--        android:text="Help"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/waterLogButton"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/guideline38"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/guideline37"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/guideline28"-->
+<!--        app:layout_constraintVertical_bias="0.44" />-->
 
     <!--    <Button-->
-<!--        android:id="@+id/petInfoButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_marginTop="24dp"-->
-<!--        android:text="Pet Info"-->
-<!--        app:layout_constraintBottom_toTopOf="@+id/guideline35"-->
-<!--        app:layout_constraintEnd_toStartOf="@+id/guideline38"-->
-<!--        app:layout_constraintHorizontal_bias="0.497"-->
-<!--        app:layout_constraintStart_toStartOf="@+id/guideline37"-->
-<!--        app:layout_constraintTop_toBottomOf="@+id/petName"-->
-<!--        app:layout_constraintVertical_bias="0.0" />-->
+    <!--        android:id="@+id/userManualButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:text="Button"-->
+    <!--        app:layout_constraintTop_toTopOf="@+id/guideline36"-->
+    <!--        tools:layout_editor_absoluteX="139dp" />-->
+
+    <!--    <Button-->
+    <!--        android:id="@+id/petInfoButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="24dp"-->
+    <!--        android:text="Pet Info"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/guideline35"-->
+    <!--        app:layout_constraintEnd_toStartOf="@+id/guideline38"-->
+    <!--        app:layout_constraintHorizontal_bias="0.497"-->
+    <!--        app:layout_constraintStart_toStartOf="@+id/guideline37"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/petName"-->
+    <!--        app:layout_constraintVertical_bias="0.0" />-->
 </androidx.constraintlayout.widget.ConstraintLayout>

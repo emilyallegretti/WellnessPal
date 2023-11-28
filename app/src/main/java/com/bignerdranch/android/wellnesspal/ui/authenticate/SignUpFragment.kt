@@ -42,7 +42,7 @@ class SignUpFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            buttonSignUp.setOnClickListener {
+            buttonCreateAccount.setOnClickListener {
                 signUp(fieldEmail.text.toString(), fieldPassword.text.toString(), fieldFname.text.toString(), fieldLname.text.toString(),
                     fieldWaterGoal.text.toString(), fieldFoodGoal.text.toString(), fieldSleepGoal.text.toString())
             }
@@ -89,6 +89,21 @@ class SignUpFragment: Fragment() {
     } else {
         binding.fieldWaterGoal.error = null
     }
+    var name = binding.fieldLname.text.toString()
+    if (name.length == 0 || name.length >= 30) {
+        Toast.makeText(context, "First name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
+        result=false
+    }
+    name = binding.fieldFname.text.toString()
+    if (name.length == 0 || name.length >= 30) {
+        Toast.makeText(context, "Last name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
+
+    }
+    name = binding.fieldEmail.text.toString()
+    if (name.length == 0 || name.length >= 30) {
+        Toast.makeText(context, "Name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
+        result=false
+    }
 
         return result
     }
@@ -101,7 +116,7 @@ class SignUpFragment: Fragment() {
             // if sign-up successful, start MainActivity
             auth.createUserWithEmailAndPassword(email, password).addOnSuccessListener {
                 Log.d("SignUpFragment", "current signed in user: "+ auth.currentUser!!.uid)
-                signUpViewModel.writeUser(email, password, fname,lname)
+                signUpViewModel.writeUser(email, fname,lname)
                 signUpViewModel.writeGoal(waterGoal, mealGoal, sleepGoal)
                 startActivity(Intent(activity, MainActivity::class.java))
             }.addOnFailureListener{

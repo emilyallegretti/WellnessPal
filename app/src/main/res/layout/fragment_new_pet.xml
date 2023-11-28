@@ -19,6 +19,7 @@
         android:textSize="45dp"
         app:layout_constraintBottom_toTopOf="@id/petNameField"
         app:layout_constraintEnd_toStartOf="@id/guideline41"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toEndOf="@id/guideline40"
         app:layout_constraintTop_toBottomOf="@id/guideline42" />
 
@@ -31,8 +32,10 @@
         android:inputType="text"
         app:layout_constraintBottom_toTopOf="@id/collar_choices"
         app:layout_constraintEnd_toStartOf="@id/guideline41"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toEndOf="@id/guideline40"
         app:layout_constraintTop_toBottomOf="@+id/new_pet_title" />
+
 
     <Spinner
         android:id="@+id/collar_choices"
@@ -41,6 +44,7 @@
         android:spinnerMode="dropdown"
         app:layout_constraintBottom_toTopOf="@id/submitNewPetButton"
         app:layout_constraintEnd_toStartOf="@id/guideline41"
+        app:layout_constraintHorizontal_bias="0.487"
         app:layout_constraintStart_toEndOf="@id/guideline40"
         app:layout_constraintTop_toBottomOf="@+id/petNameField" />
 
@@ -52,9 +56,9 @@
         android:text="Create Pet"
         app:layout_constraintBottom_toTopOf="@id/petPreviewImage"
         app:layout_constraintEnd_toStartOf="@id/guideline41"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toEndOf="@id/guideline40"
         app:layout_constraintTop_toBottomOf="@id/collar_choices" />
-
 
     <ImageView
         android:id="@+id/petPreviewImage"

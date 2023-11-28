@@ -11,8 +11,8 @@ class SignUpViewModel : ViewModel() {
     private var auth = FirebaseAuth.getInstance()
 
     // maybe with a conditional check on the email we can create AND update users in this method, same with rest of methods
-        fun writeUser(email:String, password:String, fname:String, lname:String) {
-            val user = User(email, password, fname, lname)
+        fun writeUser(email:String, fname:String, lname:String) {
+            val user = User(email, fname, lname)
             dataRepository.writeUser(user, auth!!.currentUser!!.uid)
         }
 

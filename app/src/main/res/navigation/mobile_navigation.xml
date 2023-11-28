@@ -79,14 +79,21 @@
         android:id="@+id/navigation_profile"
         android:name="com.bignerdranch.android.wellnesspal.ui.profile.ProfileFragment"
         android:label="Profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/to_reauthenticateDialog"
+            app:destination="@id/reauthenticateFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_ageUp"
         android:name="com.bignerdranch.android.wellnesspal.ui.ageup.AgeUpFragment"
         android:label="AgeUp"
         tools:layout="@layout/fragment_age_up" />
-
+    <dialog
+        android:id="@+id/reauthenticateFragment"
+        android:name="com.bignerdranch.android.wellnesspal.ui.authenticate.ReauthenticateFragment"
+        android:label="ReauthenticateFragment" />
 
 
 </navigation>

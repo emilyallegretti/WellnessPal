@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.bignerdranch.android.wellnesspal.R
 import com.bignerdranch.android.wellnesspal.databinding.FragmentProfileBinding
 import com.bignerdranch.android.wellnesspal.ui.authenticate.AuthActivity
@@ -105,10 +106,9 @@ class ProfileFragment : Fragment() {
                     }
             }
                 buttonDeleteAccount.setOnClickListener {
-                    // first reauthenticate user TODO: ask user to re-enter credentials
-                    // auth.currentUser.reauthenticate(EmailAuthProvider.getCredential(auth.currentUser.email, auth.currentUser.pa))
-                    // first delete user entry from database
-                    deleteAccount()
+                    // first reauthenticate user
+                    findNavController().navigate(R.id.to_reauthenticateDialog)
+                    profileViewModel.deleteUserEntry()
                 }
                 // Update goals based on user input.
                 buttonChangeMeals.setOnClickListener {
@@ -117,6 +117,8 @@ class ProfileFragment : Fragment() {
                         Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
                     } else {
                         profileViewModel.updateGoal(text, "eat")
+                        editTextFieldChangeMeals.text.clear()
+                        Toast.makeText(context, "Goal successfully updated", Toast.LENGTH_SHORT).show()
                     }
 
                     editTextFieldChangeMeals.setText("")
@@ -127,6 +129,8 @@ class ProfileFragment : Fragment() {
                         Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
                     } else {
                         profileViewModel.updateGoal(text, "water")
+                        editTextFieldChangeWater.text.clear()
+                        Toast.makeText(context, "Goal successfully updated", Toast.LENGTH_SHORT).show()
                     }
                 }
                 buttonChangeSleep.setOnClickListener {
@@ -135,6 +139,8 @@ class ProfileFragment : Fragment() {
                         Toast.makeText(context, R.string.empty_field_err, Toast.LENGTH_LONG).show()
                     } else {
                         profileViewModel.updateGoal(text, "sleep")
+                        editTextFieldChangeSleep.text.clear()
+                        Toast.makeText(context, "Goal successfully updated", Toast.LENGTH_SHORT).show()
                     }
                 }
             }
@@ -146,17 +152,7 @@ class ProfileFragment : Fragment() {
             userReference.removeEventListener(profileViewModel.userListener)
         }
 
-        private fun deleteAccount() {
-            profileViewModel.deleteUserEntry()
 
-            // delete FirebaseUser from Authentication, then return to sign-in screen
-            auth.currentUser?.delete()?.addOnSuccessListener {
-                Log.d(TAG, "user deleted from Firebase Auth")
-                startActivity(Intent(activity, AuthActivity::class.java))
-            }?.addOnFailureListener {
-                Log.d(TAG, "failure deleting user from Firebase Auth", it)
-            }
-        }
 
     override fun onStop() {
         super.onStop()

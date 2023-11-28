@@ -7,7 +7,7 @@ plugins {
 
 android {
     namespace = "com.bignerdranch.android.wellnesspal"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.bignerdranch.android.wellnesspal"
@@ -72,4 +72,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("androidx.test:rules:1.4.0")
+    androidTestImplementation("androidx.navigation:navigation-testing:2.7.5")
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
 }
