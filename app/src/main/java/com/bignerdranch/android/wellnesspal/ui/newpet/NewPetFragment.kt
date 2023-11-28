@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -43,9 +44,6 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 // set default selection
             colorDropdown.setSelection(0)
 
-                // set up LiveData observer for current pet
-
-
         }
         return binding.root
     }
@@ -55,12 +53,16 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         // set event listener for submit button
         binding.submitNewPetButton.setOnClickListener{
-
-            newPetViewModel.writeNewPet(
-                binding.petNameField.text.toString(),
-                colorDropdown.selectedItem.toString()
-            )
-            findNavController().popBackStack()
+            val name = binding.petNameField.text.toString()
+            if (name.length == 0 || name.length >= 15) {
+                Toast.makeText(context, "Name must be between 1 and 15 characters.", Toast.LENGTH_SHORT).show()
+            } else {
+                newPetViewModel.writeNewPet(
+                    binding.petNameField.text.toString(),
+                    colorDropdown.selectedItem.toString()
+                )
+                findNavController().popBackStack()
+            }
         }
         // whenever a new selection is made, update the cat preview picture to contain the selected color
         colorDropdown.onItemSelectedListener = this
