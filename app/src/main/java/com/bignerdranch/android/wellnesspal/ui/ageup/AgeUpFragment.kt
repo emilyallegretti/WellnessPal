@@ -59,6 +59,15 @@ class AgeUpFragment : Fragment(), SensorEventListener {
 
         binding.shakeInstruction.text = "Shake your phone to age up!"
 
+        binding.skipButton.text = "SKIP"
+
+        binding.apply{
+            skipButton.setOnClickListener(){
+                findNavController().popBackStack()
+            }
+        }
+
+
     }
 
     override fun onSensorChanged(event: SensorEvent) {

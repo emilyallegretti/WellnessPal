@@ -76,4 +76,15 @@
         app:layout_constraintTop_toTopOf="@+id/guideline29"
         app:layout_constraintVertical_bias="0.295"
         tools:text="!Shake your phone!" />
+
+    <Button
+        android:id="@+id/skipButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/guideline39"
+        app:layout_constraintEnd_toStartOf="@+id/guideline38"
+        app:layout_constraintStart_toStartOf="@+id/guideline37"
+        app:layout_constraintTop_toTopOf="@+id/guideline36"
+        tools:text="SKIP" />
 </androidx.constraintlayout.widget.ConstraintLayout>
