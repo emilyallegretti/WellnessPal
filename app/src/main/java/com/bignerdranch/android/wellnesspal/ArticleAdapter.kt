@@ -13,6 +13,8 @@ class ArticleViewHolder(private val binding: ArticleLayoutBinding) : RecyclerVie
     fun bind(article: Article) {
         binding.articleTitleTextView.text = article.title
         binding.articleAbstractTextView.text = article.abstract
+        binding.articleLinkTextView.text = article.url
+
     }
 }
 
