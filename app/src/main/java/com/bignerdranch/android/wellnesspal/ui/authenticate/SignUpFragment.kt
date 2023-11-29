@@ -42,7 +42,7 @@ class SignUpFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.apply {
-            buttonCreateAccount.setOnClickListener {
+            buttonCreateAccount?.setOnClickListener {
                 signUp(fieldEmail.text.toString(), fieldPassword.text.toString(), fieldFname.text.toString(), fieldLname.text.toString(),
                     fieldWaterGoal.text.toString(), fieldFoodGoal.text.toString(), fieldSleepGoal.text.toString())
             }

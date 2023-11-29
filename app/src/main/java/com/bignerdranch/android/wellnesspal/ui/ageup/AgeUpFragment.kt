@@ -63,10 +63,10 @@ class AgeUpFragment : Fragment(), SensorEventListener {
             binding.shakeInstruction.text = "Accelerometer not detected, please skip"
         }
 
-        binding.skipButton.text = "SKIP"
+        binding.skipButton!!.text = "SKIP"
 
         binding.apply{
-            skipButton.setOnClickListener(){
+            skipButton!!.setOnClickListener(){
                 findNavController().popBackStack()
             }
         }
