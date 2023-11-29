@@ -1,5 +1,9 @@
 package com.bignerdranch.android.wellnesspal.ui.newpet
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -44,6 +48,9 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 // set default selection
             colorDropdown.setSelection(0)
 
+                // set up LiveData observer for current pet
+
+
         }
         return binding.root
     }
@@ -52,20 +59,35 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
         super.onViewCreated(view, savedInstanceState)
 
         // set event listener for submit button
-        binding.submitNewPetButton.setOnClickListener{
-            val name = binding.petNameField.text.toString()
-            if (name.length == 0 || name.length >= 15) {
-                Toast.makeText(context, "Name must be between 1 and 15 characters.", Toast.LENGTH_SHORT).show()
-            } else {
+        binding.submitNewPetButton.setOnClickListener {
+            if (checkForInternet(view.context)) {
                 newPetViewModel.writeNewPet(
                     binding.petNameField.text.toString(),
                     colorDropdown.selectedItem.toString()
                 )
                 findNavController().popBackStack()
+            } else {
+                Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
             }
+            binding.submitNewPetButton.setOnClickListener {
+                val name = binding.petNameField.text.toString()
+                if (name.length == 0 || name.length >= 15) {
+                    Toast.makeText(
+                        context,
+                        "Name must be between 1 and 15 characters.",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                } else {
+                    newPetViewModel.writeNewPet(
+                        binding.petNameField.text.toString(),
+                        colorDropdown.selectedItem.toString()
+                    )
+                    findNavController().popBackStack()
+                }
+            }
+            // whenever a new selection is made, update the cat preview picture to contain the selected color
+            colorDropdown.onItemSelectedListener = this
         }
-        // whenever a new selection is made, update the cat preview picture to contain the selected color
-        colorDropdown.onItemSelectedListener = this
     }
 // event handlers for when a new choice gets selected in the spinner.
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
@@ -88,5 +110,22 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
         TODO("Not yet implemented")
     }
 
+    //Code from geeks for geeks geeksforgeeks.com
+    private fun checkForInternet(context: Context): Boolean{
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+            val network = connectivityManager.activeNetwork?:return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network)?:return false
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        }else{
+            @Suppress("DEPRECATION") val networkInfo = connectivityManager.activeNetworkInfo?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
+    }
 }

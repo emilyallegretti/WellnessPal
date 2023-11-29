@@ -52,6 +52,17 @@
         app:layout_constraintStart_toStartOf="@id/foodLogButton"
         app:layout_constraintTop_toBottomOf="@+id/foodLogButton"/>
 
+    <Button
+        android:id="@+id/helpButton"
+        android:layout_width="wrap_content"
+        android:layout_height="47dp"
+        android:text="Help"
+        app:layout_constraintTop_toBottomOf="@+id/guideline35"
+        app:layout_constraintStart_toEndOf="@+id/guideline45"
+        app:layout_constraintEnd_toStartOf="@id/guideline38"
+        app:layout_constraintBottom_toTopOf="@id/guideline39"
+        app:layout_constraintVertical_bias="0" />
+    
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline37"
         android:layout_width="wrap_content"
