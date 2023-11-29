@@ -61,15 +61,6 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
         // set event listener for submit button
         binding.submitNewPetButton.setOnClickListener {
             if (checkForInternet(view.context)) {
-                newPetViewModel.writeNewPet(
-                    binding.petNameField.text.toString(),
-                    colorDropdown.selectedItem.toString()
-                )
-                findNavController().popBackStack()
-            } else {
-                Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
-            }
-            binding.submitNewPetButton.setOnClickListener {
                 val name = binding.petNameField.text.toString()
                 if (name.length == 0 || name.length >= 15) {
                     Toast.makeText(
@@ -84,7 +75,10 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
                     )
                     findNavController().popBackStack()
                 }
+            } else {
+                Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
             }
+
             // whenever a new selection is made, update the cat preview picture to contain the selected color
             colorDropdown.onItemSelectedListener = this
         }
