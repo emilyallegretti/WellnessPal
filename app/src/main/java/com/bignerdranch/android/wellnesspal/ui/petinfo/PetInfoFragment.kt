@@ -248,7 +248,7 @@ class PetInfoFragment : Fragment() {
             sleepLogButton.setOnClickListener {
                 findNavController().navigate(R.id.to_sleep_log)
             }
-            helpButton.setOnClickListener {
+            helpButton?.setOnClickListener {
                 findNavController().navigate(R.id.to_help_fragment)
             }
 //            petInfoButton.setOnClickListener {
