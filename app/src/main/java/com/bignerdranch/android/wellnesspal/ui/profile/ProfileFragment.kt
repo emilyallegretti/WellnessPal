@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import kotlinx.coroutines.delay
 import org.w3c.dom.Text
 
 
@@ -133,9 +134,6 @@ class ProfileFragment : Fragment() {
                 } else {
                     Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
                 }
-                // first reauthenticate user
-                findNavController().navigate(R.id.to_reauthenticateDialog)
-                profileViewModel.deleteUserEntry()
             }
             // Update goals based on user input.
             buttonChangeMeals.setOnClickListener {
