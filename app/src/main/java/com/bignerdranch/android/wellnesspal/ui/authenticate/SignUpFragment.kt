@@ -48,15 +48,17 @@ class SignUpFragment: Fragment() {
         binding.apply {
             buttonCreateAccount?.setOnClickListener {
                 if (checkForInternet(view.context)) {
-                    signUp(
-                        fieldEmail.text.toString(),
-                        fieldPassword.text.toString(),
-                        fieldFname.text.toString(),
-                        fieldLname.text.toString(),
-                        fieldWaterGoal.text.toString(),
-                        fieldFoodGoal.text.toString(),
-                        fieldSleepGoal.text.toString()
-                    )
+                    if (validateForm()) {
+                        signUp(
+                            fieldEmail.text.toString(),
+                            fieldPassword.text.toString(),
+                            fieldFname.text.toString(),
+                            fieldLname.text.toString(),
+                            fieldWaterGoal.text.toString(),
+                            fieldFoodGoal.text.toString(),
+                            fieldSleepGoal.text.toString()
+                        )
+                    }
                 }else{
                     Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
                 }
@@ -79,7 +81,6 @@ class SignUpFragment: Fragment() {
         } else {
             binding.fieldEmail.error = null
         }
-//todo: validate rest of form
         if (TextUtils.isEmpty(binding.fieldPassword.text.toString())) {
             binding.fieldPassword.error = "Required"
             result = false
@@ -106,13 +107,13 @@ class SignUpFragment: Fragment() {
     }
     var name = binding.fieldLname.text.toString()
     if (name.length == 0 || name.length >= 30) {
-        Toast.makeText(context, "First name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(context, "Last name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
         result=false
     }
     name = binding.fieldFname.text.toString()
     if (name.length == 0 || name.length >= 30) {
-        Toast.makeText(context, "Last name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
-
+        Toast.makeText(context, "First name must be between 1 and 30 characters.", Toast.LENGTH_SHORT).show()
+        result = false
     }
     name = binding.fieldEmail.text.toString()
     if (name.length == 0 || name.length >= 30) {

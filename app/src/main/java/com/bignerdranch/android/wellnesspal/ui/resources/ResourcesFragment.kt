@@ -84,7 +84,7 @@ class ResourcesFragment : Fragment() {
                 Log.d(TAG, "Articles from observer $it")
                 if(it.isEmpty()){
                     resourcesViewModel.loadArticles()
-                    delay(900)
+                    delay(1500)
                     Log.d(TAG, "Articles after loading $it")
                     adapter.setArticles(it.subList(1,it.size))
                     binding.articlesRecyclerView.adapter!!.notifyDataSetChanged()
