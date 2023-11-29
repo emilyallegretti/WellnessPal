@@ -11,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bignerdranch.android.wellnesspal.databinding.FragmentResourcesBinding
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bignerdranch.android.wellnesspal.ArticleAdapter
+import kotlinx.coroutines.delay
 
 import kotlinx.coroutines.launch
 
@@ -30,7 +31,7 @@ class ResourcesFragment : Fragment() {
 
 
    /* private lateinit var nyt: NYTapi*/
-    //private var articles: MutableList<Article> = ArrayList()
+    //private var articles: List<Article> = ArrayList()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -79,20 +80,27 @@ class ResourcesFragment : Fragment() {
 
         lifecycleScope.launch {
             resourcesViewModel.articles.collect {
+
                 Log.d(TAG, "Articles from observer $it")
                 if(it.isEmpty()){
                     resourcesViewModel.loadArticles()
+                    delay(900)
                     Log.d(TAG, "Articles after loading $it")
-                    adapter.setArticles(it)
+                    adapter.setArticles(it.subList(1,it.size))
+                    binding.articlesRecyclerView.adapter!!.notifyDataSetChanged()
+
+
+                }else {
+                    adapter.setArticles(it.subList(1,it.size))
                     binding.articlesRecyclerView.adapter!!.notifyDataSetChanged()
                 }
-
-                adapter.setArticles(it)
-                binding.articlesRecyclerView.adapter!!.notifyDataSetChanged()
 
 
             }
         }
+
+
+
 
         /*resourcesViewModel.loadArticles()
 

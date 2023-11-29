@@ -1,8 +1,6 @@
 package com.bignerdranch.android.wellnesspal.ui.resources
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.bignerdranch.android.wellnesspal.api.NYTapi
 import com.bignerdranch.android.wellnesspal.models.Article
@@ -10,7 +8,6 @@ import com.bignerdranch.android.wellnesspal.models.ResponseData
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import retrofit2.Call
 import retrofit2.Callback
