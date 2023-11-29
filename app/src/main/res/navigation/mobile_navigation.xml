@@ -99,7 +99,7 @@
         android:label="ReauthenticateFragment" />
     <dialog
         android:id="@+id/helpFragment"
-        android:name="com.bignerdranch.android.wellnesspal.ui.authenticate.HelpFragment"
+        android:name="com.bignerdranch.android.wellnesspal.ui.petinfo.HelpFragment"
         android:label="HelpFragment" />
 
 
