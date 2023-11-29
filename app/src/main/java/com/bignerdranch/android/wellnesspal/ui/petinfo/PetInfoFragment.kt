@@ -248,7 +248,7 @@ class PetInfoFragment : Fragment() {
             sleepLogButton.setOnClickListener {
                 findNavController().navigate(R.id.to_sleep_log)
             }
-            helpButton?.setOnClickListener {
+            helpButton!!.setOnClickListener {
                 findNavController().navigate(R.id.to_help_fragment)
             }
 //            petInfoButton.setOnClickListener {
@@ -375,11 +375,11 @@ class PetInfoFragment : Fragment() {
                 }
             } else if (size == "medium") {
                 if (color == "blue") {
-                    image.setImageResource(R.drawable.med_blue_sad)
+                    image.setImageResource(R.drawable.small_blue_sad)
                 } else if (color == "red") {
-                    image.setImageResource(R.drawable.med_red_sad)
+                    image.setImageResource(R.drawable.small_red_sad)
                 } else {
-                    image.setImageResource(R.drawable.med_purple_sad)
+                    image.setImageResource(R.drawable.small_purple_sad)
                 }
 
             } else if (size == "large"){
