@@ -70,7 +70,7 @@ class SleepLogFragment : Fragment() {
 
         }
         sleepLogViewModel.goalData.observe(viewLifecycleOwner) {
-            binding.waterGoalText.text = "Sleep Goal: $it"
+            binding.sleepGoalText.text = "Sleep Goal: $it"
         }
         return root
     }

@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp">
+    android:paddingBottom="?attr/actionBarSize">
 
     <ImageView
         android:id="@+id/petImage"
         android:layout_width="86dp"
         android:layout_height="86dp"
-        android:layout_marginTop="204dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/guideline40"
         app:layout_constraintTop_toTopOf="@+id/guideline42"
         app:srcCompat="@drawable/baseline_pets_24" />
 
@@ -22,11 +21,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/guideline41"
-        app:layout_constraintHorizontal_bias="0.045"
-        app:layout_constraintStart_toStartOf="@+id/guideline40"
+        app:layout_constraintEnd_toEndOf="@+id/petImage"
+        app:layout_constraintStart_toStartOf="@+id/petImage"
         app:layout_constraintTop_toBottomOf="@+id/petImage"
         tools:text="Pet Name" />
+
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline40"
         android:layout_width="wrap_content"

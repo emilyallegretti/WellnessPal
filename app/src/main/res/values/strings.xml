@@ -13,7 +13,7 @@
     <string name="sign_out">Sign Out</string>
     <string name="submit">Submit</string>
     <string name="enterWaterLog">Enter the ounces of water drank</string>
-    <string name="water_goal"># Ounces of Water</string>
+    <string name="water_goal"># Oz of Water</string>
     <string name="num_meals"># Meals Eaten</string>
     <string name="hours_sleep">"# Hours Sleep"</string>
     <string name="first_name">First Name:</string>
