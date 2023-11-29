@@ -1,6 +1,51 @@
+
+<androidx.constraintlayout.widget.ConstraintLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:paddingBottom="?attr/actionBarSize">
+
 <androidx.recyclerview.widget.RecyclerView
-    xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:id="@+id/logs_recycler_view"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent" />
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintEnd_toStartOf="@+id/guideline41"
+    app:layout_constraintStart_toEndOf="@+id/guideline40"
+    app:layout_constraintTop_toBottomOf="@+id/guideline42"
+    app:layout_constraintBottom_toTopOf="@id/guideline43"
+    app:layout_constraintVertical_bias="0"
+    app:layout_constraintHorizontal_bias="0"/>
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline40"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.06" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline41"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    app:layout_constraintGuide_percent="0.94" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline42"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.01" />
+
+<androidx.constraintlayout.widget.Guideline
+    android:id="@+id/guideline43"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    app:layout_constraintGuide_percent="0.99" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+

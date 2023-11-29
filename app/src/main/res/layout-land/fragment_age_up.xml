@@ -4,20 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="?attr/actionBarSize"
-    tools:context=".ui.ageup.AgeUpFragment">
+    tools:context=".ui.ageup.AgeUpFragment"
+    android:paddingBottom="?attr/actionBarSize">
 
     <ImageView
         android:id="@+id/ageUpPetImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintWidth_percent="0.8"
-        app:layout_constraintHeight_percent="0.75"
         android:src="@drawable/small_blue_happy"
+        app:layout_constraintWidth_percent="0.5"
+        app:layout_constraintHeight_percent="0.75"
         app:layout_constraintBottom_toTopOf="@id/guideline39"
         app:layout_constraintEnd_toStartOf="@id/guideline38"
         app:layout_constraintStart_toEndOf="@id/guideline37"
-        app:layout_constraintTop_toBottomOf="@id/shakeInstruction" />
+        app:layout_constraintTop_toBottomOf="@id/shakeInstruction"
+        app:layout_constraintHorizontal_bias="0.5" />
 
 
     <androidx.constraintlayout.widget.Guideline
@@ -70,18 +71,7 @@
         android:textSize="30dp"
         app:layout_constraintBottom_toTopOf="@+id/ageUpPetImage"
         app:layout_constraintEnd_toStartOf="@+id/guideline38"
-        app:layout_constraintStart_toEndOf="@+id/guideline37"
-        app:layout_constraintTop_toBottomOf="@+id/guideline29"
-        tools:text="!Shake your phone!" />
-
-    <Button
-        android:id="@+id/skipButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/guideline39"
-        app:layout_constraintEnd_toStartOf="@+id/guideline38"
         app:layout_constraintStart_toStartOf="@+id/guideline37"
-        app:layout_constraintTop_toTopOf="@+id/guideline36"
-        tools:text="SKIP" />
+        app:layout_constraintTop_toTopOf="@+id/guideline29"
+        tools:text="!Shake your phone!" />
 </androidx.constraintlayout.widget.ConstraintLayout>
