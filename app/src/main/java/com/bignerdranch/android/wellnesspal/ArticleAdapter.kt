@@ -39,5 +39,6 @@ class ArticleAdapter() :
 
     fun setArticles(newArticles: List<Article>) {
         articles = newArticles.toMutableList()
+        Log.d(TAG, "Articles were set")
     }
 }
