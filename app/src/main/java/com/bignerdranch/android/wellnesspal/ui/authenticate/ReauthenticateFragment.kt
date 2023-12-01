@@ -41,12 +41,13 @@ class ReauthenticateFragment: DialogFragment() {
                     // delete FirebaseUser from Authentication
                     auth?.delete()?.addOnSuccessListener {
                         //Toast.makeText(context, "Successfully deleted user", Toast.LENGTH_SHORT).show()
-                        Thread.sleep(1500)
-                        startActivity(Intent(requireActivity(), AuthActivity::class.java))
+
                     }?.addOnFailureListener {
                        // Toast.makeText(context, "Error deleting user", Toast.LENGTH_SHORT).show()
                         dialog.dismiss()
                     }
+                    Thread.sleep(1500)
+                    startActivity(Intent(context, AuthActivity::class.java))
                 }
                 .setNegativeButton(R.string.cancel
                 ) { _, _ ->
