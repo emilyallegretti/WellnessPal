@@ -167,7 +167,7 @@ class PetInfoFragment : Fragment() {
            */
                 if (it.age == 3) {
                     // require shake and then display medium sized happy version of pet, given color
-                    Log.d(TAG, "birthdayOne is ${petInfoViewModel.petData.value?.birthdayThree}")
+                    Log.d(TAG, "birthdayOne is ${petInfoViewModel.petData.value?.birthdayOne}")
 
                     if (petInfoViewModel.petData.value?.birthdayOne == false){
 
@@ -175,6 +175,7 @@ class PetInfoFragment : Fragment() {
                             .show()
 
                         petInfoViewModel.updateBirthday("One", currPetKey)
+                        Thread.sleep(800)
 
                         Log.d(TAG, "navigated to AgeUp")
                         findNavController().navigate(R.id.to_age_up)
@@ -191,6 +192,8 @@ class PetInfoFragment : Fragment() {
                             .show()
                         // go to the AgeUpFragment
                         petInfoViewModel.updateBirthday("Two", currPetKey)
+
+                        Thread.sleep(800)
                         findNavController().navigate(R.id.to_age_up)
 
                         mood = "happy"
@@ -206,7 +209,7 @@ class PetInfoFragment : Fragment() {
                         Toast.LENGTH_LONG
                     ).show()
 
-                    // go to the AgeUpFragment
+
                     petInfoViewModel.updateBirthday("Three", currPetKey)
 
                     mood = "happy"

@@ -74,4 +74,5 @@ dependencies {
     androidTestImplementation("androidx.test:rules:1.4.0")
     androidTestImplementation("androidx.navigation:navigation-testing:2.7.5")
     androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
+    debugImplementation("com.squareup.leakcanary:leakcanary-android:2.12")
 }
