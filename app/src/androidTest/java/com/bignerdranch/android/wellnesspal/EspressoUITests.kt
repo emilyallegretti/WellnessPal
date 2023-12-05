@@ -126,6 +126,7 @@ class EspressoUITests {
         // submit a water log
         onView(withId(R.id.waterLogButton)).perform(click())
         // make sure goal info is as expected
+        Thread.sleep(1500)
         onView(withId(R.id.waterLeftToGoalText)).check(matches(withText("Oz. water left to reach goal: 120")))
         onView(withId(R.id.waterGoalText)).check(matches(withText("Water Goal: 120")))
         onView(withId(R.id.fieldWaterLog)).perform(typeText("120"), closeSoftKeyboard())

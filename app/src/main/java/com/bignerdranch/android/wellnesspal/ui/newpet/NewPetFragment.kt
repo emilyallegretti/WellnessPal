@@ -78,10 +78,10 @@ class NewPetFragment : Fragment(), AdapterView.OnItemSelectedListener {
             } else {
                 Toast.makeText(view.context, "No Internet Connection", Toast.LENGTH_SHORT).show()
             }
+        }
 
             // whenever a new selection is made, update the cat preview picture to contain the selected color
             colorDropdown.onItemSelectedListener = this
-        }
     }
 // event handlers for when a new choice gets selected in the spinner.
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, pos: Int, id: Long) {
